@@ -3,30 +3,260 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UTN FRBA Formula SAE</title>
+
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <title>FRBA Racing</title>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            utnred: "#d00000",
+            coal: "#0b0b0f"
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body class="bg-black text-white">
 
-<header class="fixed w-full bg-slate-900/90 backdrop-blur z-50">
-  <nav class="max-w-7xl mx-auto flex items-center justify-between p-4">
-    <span class="font-bold">FRBA Racing</span>
-    <div class="space-x-6 hidden md:block">
-      <a href="index.html">Inicio</a>
-      <a href="electronica.html">Electrónica</a>
-      <a href="chasis.html">Chasis</a>
-    </div>
-  </nav>
-</header>
+<body class="bg-coal text-white selection:bg-utnred/40 selection:text-white">
+  <!-- Navbar -->
+  <header class="fixed inset-x-0 top-0 z-50 bg-black/60 backdrop-blur border-b border-white/10">
+    <nav class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded bg-utnred/90 ring-1 ring-white/10 grid place-items-center font-black">UTN</div>
+        <div class="leading-tight">
+          <div class="font-semibold tracking-tight">Formula SAE</div>
+          <div class="text-xs text-white/60">UTN FRBA</div>
+        </div>
+      </a>
 
-<section class="h-screen bg-[url('assets/img/electronica.jpg')] bg-cover bg-center flex items-center justify-center">
-  <div class="bg-black/60 p-8 rounded">
-    <h1 class="text-5xl font-bold">Electrónica</h1>
-    <p class="mt-4 text-xl text-blue-400">
-      El cerebro que impulsa nuestro rendimiento en pista
-    </p>
-  </div>
-</section>
+      <div class="hidden md:flex items-center gap-6 text-sm text-white/80">
+        <a class="hover:text-white" href="#proyecto">Proyecto</a>
+        <a class="hover:text-white" href="#competencia">Competencia</a>
+        <a class="hover:text-white" href="#sumate">Sumate</a>
+        <a class="hover:text-white" href="#contacto">Contacto</a>
+        <a class="inline-flex items-center rounded bg-utnred px-4 py-2 font-semibold text-white hover:bg-utnred/90"
+           href="#sumate">
+          Sumate
+        </a>
+      </div>
 
+      <!-- Mobile anchor (simple, no JS) -->
+      <a class="md:hidden inline-flex items-center rounded bg-utnred px-3 py-2 text-sm font-semibold hover:bg-utnred/90"
+         href="#sumate">Sumate</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="relative min-h-[92vh] pt-20">
+      <!-- Background image -->
+      <div class="absolute inset-0">
+        <img
+          src="assets/img/formula_img.jpeg"
+          alt="UTN FRBA Formula SAE"
+          class="h-full w-full object-cover"
+        />
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/75 via-black/60 to-coal"></div>
+        <!-- Subtle red glow -->
+        <div class="absolute -bottom-24 left-1/2 h-72 w-[42rem] -translate-x-1/2 rounded-full bg-utnred/25 blur-3xl"></div>
+      </div>
+
+      <div class="relative mx-auto max-w-7xl px-4 py-16">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/40 px-3 py-1 text-xs text-white/80">
+            <span class="h-2 w-2 rounded-full bg-utnred"></span>
+            Equipo iniciado en 2025 · UTN FRBA
+          </div>
+
+          <h1 class="mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl">
+            Construimos un <span class="text-utnred">Fórmula SAE eléctrico</span>
+            para competir en Brasil 2027
+          </h1>
+
+          <p class="mt-5 text-lg text-white/80">
+            Arrancamos el equipo este año y lo abrimos al público. Nuestro objetivo es diseñar un auto rápido y competitivo,
+            y también poder presentarlo y defenderlo como proyecto de ingeniería.
+          </p>
+
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="#sumate"
+               class="inline-flex items-center justify-center rounded bg-utnred px-6 py-3 font-semibold hover:bg-utnred/90">
+              Quiero sumarme
+            </a>
+            <a href="#competencia"
+               class="inline-flex items-center justify-center rounded border border-white/15 bg-black/30 px-6 py-3 font-semibold text-white/90 hover:bg-black/40">
+              Ver cómo se evalúa la competencia
+            </a>
+          </div>
+
+          <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div class="rounded-lg border border-white/10 bg-black/30 p-4">
+              <div class="text-xs text-white/60">Meta</div>
+              <div class="mt-1 font-semibold">FSAE Brasil 2027</div>
+            </div>
+            <div class="rounded-lg border border-white/10 bg-black/30 p-4">
+              <div class="text-xs text-white/60">Categoría</div>
+              <div class="mt-1 font-semibold">Auto eléctrico</div>
+            </div>
+            <div class="rounded-lg border border-white/10 bg-black/30 p-4">
+              <div class="text-xs text-white/60">Enfoque</div>
+              <div class="mt-1 font-semibold">Rendimiento + defensa del proyecto</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proyecto -->
+    <section id="proyecto" class="mx-auto max-w-7xl px-4 py-16">
+      <div class="max-w-3xl">
+        <h2 class="text-3xl font-bold tracking-tight">El proyecto</h2>
+        <p class="mt-4 text-white/75">
+          Formula SAE es una competencia universitaria donde se evalúa tanto el desempeño del auto como la calidad del proyecto.
+          Nuestro plan es desarrollar un monoplaza eléctrico desde UTN FRBA, con foco en ingeniería, iteración y validación.
+        </p>
+      </div>
+
+      <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div class="rounded-xl border border-white/10 bg-black/25 p-6">
+          <div class="text-utnred font-semibold">Diseño</div>
+          <div class="mt-2 text-white/80 text-sm">
+            Definimos arquitectura, requerimientos, seguridad y documentación desde el inicio.
+          </div>
+        </div>
+        <div class="rounded-xl border border-white/10 bg-black/25 p-6">
+          <div class="text-utnred font-semibold">Construcción</div>
+          <div class="mt-2 text-white/80 text-sm">
+            Fabricación y ensamble por etapas, con pruebas de integración y control de calidad.
+          </div>
+        </div>
+        <div class="rounded-xl border border-white/10 bg-black/25 p-6">
+          <div class="text-utnred font-semibold">Testing</div>
+          <div class="mt-2 text-white/80 text-sm">
+            Medimos, iteramos y optimizamos para llegar competitivos a las pruebas dinámicas.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Competencia -->
+    <section id="competencia" class="bg-black/30 border-y border-white/10">
+      <div class="mx-auto max-w-7xl px-4 py-16">
+        <div class="max-w-3xl">
+          <h2 class="text-3xl font-bold tracking-tight">¿Cómo es la competencia?</h2>
+          <p class="mt-4 text-white/75">
+            La competencia cuenta con <span class="text-white font-semibold">pruebas dinámicas y estáticas</span>.
+            Se evalúa que el auto sea rápido y competitivo, pero también que puedas presentarlo y defenderlo como proyecto.
+          </p>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div class="rounded-xl border border-white/10 bg-black/25 p-6">
+            <h3 class="text-xl font-semibold">Pruebas estáticas</h3>
+            <ul class="mt-4 space-y-2 text-white/75 text-sm">
+              <li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-utnred"></span>Presentación y defensa del diseño</li>
+              <li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-utnred"></span>Documentación y decisiones de ingeniería</li>
+              <li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-utnred"></span>Viabilidad y calidad del proyecto</li>
+            </ul>
+          </div>
+
+          <div class="rounded-xl border border-white/10 bg-black/25 p-6">
+            <h3 class="text-xl font-semibold">Pruebas dinámicas</h3>
+            <ul class="mt-4 space-y-2 text-white/75 text-sm">
+              <li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-utnred"></span>Rendimiento en pista</li>
+              <li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-utnred"></span>Confiabilidad y consistencia</li>
+              <li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-utnred"></span>Optimización del conjunto (auto + piloto)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sumate -->
+    <section id="sumate" class="mx-auto max-w-7xl px-4 py-16">
+      <div class="grid grid-cols-1 gap-10 md:grid-cols-2 md:items-center">
+        <div>
+          <h2 class="text-3xl font-bold tracking-tight">Sumate al equipo</h2>
+          <p class="mt-4 text-white/75">
+            Estamos abriendo el equipo al público. Si sos estudiante de UTN FRBA y te interesa participar, dejá tus datos.
+          </p>
+
+          <div class="mt-6 rounded-xl border border-white/10 bg-black/25 p-6">
+            <div class="text-sm text-white/60">Roles típicos</div>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="rounded-full border border-white/10 bg-black/30 px-3 py-1 text-xs text-white/80">Electrónica</span>
+              <span class="rounded-full border border-white/10 bg-black/30 px-3 py-1 text-xs text-white/80">Software</span>
+              <span class="rounded-full border border-white/10 bg-black/30 px-3 py-1 text-xs text-white/80">Powertrain</span>
+              <span class="rounded-full border border-white/10 bg-black/30 px-3 py-1 text-xs text-white/80">Chasis</span>
+              <span class="rounded-full border border-white/10 bg-black/30 px-3 py-1 text-xs text-white/80">Aero</span>
+              <span class="rounded-full border border-white/10 bg-black/30 px-3 py-1 text-xs text-white/80">Gestión / Sponsors</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact form (placeholder) -->
+        <div class="rounded-2xl border border-white/10 bg-black/30 p-6">
+          <h3 class="text-xl font-semibold">Contacto rápido</h3>
+          <p class="mt-2 text-sm text-white/70">
+            (Boceto) Podés reemplazar esto por un Google Form / Formspree cuando lo tengan.
+          </p>
+
+          <form class="mt-6 space-y-4" action="#" method="post">
+            <div>
+              <label class="block text-sm text-white/70">Nombre y apellido</label>
+              <input class="mt-2 w-full rounded-lg bg-black/40 border border-white/10 px-4 py-3 outline-none focus:border-utnred/70"
+                     placeholder="Tu nombre" />
+            </div>
+            <div>
+              <label class="block text-sm text-white/70">Email</label>
+              <input class="mt-2 w-full rounded-lg bg-black/40 border border-white/10 px-4 py-3 outline-none focus:border-utnred/70"
+                     placeholder="tu@mail.com" />
+            </div>
+            <div>
+              <label class="block text-sm text-white/70">Interés</label>
+              <input class="mt-2 w-full rounded-lg bg-black/40 border border-white/10 px-4 py-3 outline-none focus:border-utnred/70"
+                     placeholder="Ej: Electrónica, Software, Sponsors..." />
+            </div>
+
+            <button type="button"
+                    class="w-full rounded-lg bg-utnred px-6 py-3 font-semibold hover:bg-utnred/90">
+              Enviar (placeholder)
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto" class="border-t border-white/10 bg-black/40">
+      <div class="mx-auto max-w-7xl px-4 py-10">
+        <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          <div>
+            <div class="font-semibold">UTN FRBA Formula SAE</div>
+            <div class="text-sm text-white/60">Equipo iniciado en 2025 · Objetivo: FSAE Brasil 2027 · EV</div>
+          </div>
+          <div class="flex gap-4 text-sm text-white/70">
+            <a class="hover:text-white" href="#top">Inicio</a>
+            <a class="hover:text-white" href="#proyecto">Proyecto</a>
+            <a class="hover:text-white" href="#competencia">Competencia</a>
+            <a class="hover:text-white" href="#sumate">Sumate</a>
+          </div>
+        </div>
+
+        <div class="mt-8 text-xs text-white/50">
+          © <span id="y"></span> UTN FRBA Formula SAE · Boceto de landing
+        </div>
+      </div>
+
+      <script>
+        document.getElementById("y").textContent = new Date().getFullYear();
+      </script>
+    </footer>
+  </main>
 </body>
 </html>
