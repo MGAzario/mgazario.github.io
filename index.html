@@ -1,254 +1,1130 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>UTN FRBA Formula SAE</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="UTN FRBA Motorsport - Equipo Formula Student que diseña y construye un monoplaza eléctrico para competir en FSAE Brasil 2027">
+  <title>UTN FRBA Motorsport | Formula Student</title>
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            utnred: "#d00000",
-            coal: "#0b0b0f"
-          }
-        }
+  <!-- Google Fonts - Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ========================================
+       CSS Variables & Reset
+    ======================================== */
+    :root {
+      --color-black: #0a0a0c;
+      --color-gray-dark: #121214;
+      --color-gray: #1a1a1e;
+      --color-gray-light: #2a2a30;
+      --color-white: #ffffff;
+      --color-white-muted: rgba(255, 255, 255, 0.7);
+      --color-white-subtle: rgba(255, 255, 255, 0.5);
+      --color-red: #d00000;
+      --color-red-hover: #b00000;
+      --color-red-glow: rgba(208, 0, 0, 0.3);
+      --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --max-width: 1200px;
+      --header-height: 70px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--color-black);
+      color: var(--color-white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Focus visible for accessibility */
+    :focus-visible {
+      outline: 2px solid var(--color-red);
+      outline-offset: 2px;
+    }
+
+    ::selection {
+      background-color: var(--color-red-glow);
+      color: var(--color-white);
+    }
+
+    /* ========================================
+       Header / Navigation
+    ======================================== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(10, 10, 12, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      height: var(--header-height);
+    }
+
+    .header__container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header__logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .header__logo-img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .header__logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header__logo-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: -0.02em;
+    }
+
+    .header__logo-subtitle {
+      font-size: 0.75rem;
+      color: var(--color-white-subtle);
+    }
+
+    .nav {
+      display: none;
+    }
+
+    .nav__list {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav__link {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--color-white-muted);
+      transition: color 0.2s ease;
+    }
+
+    .nav__link:hover {
+      color: var(--color-white);
+    }
+
+    .header__cta {
+      display: none;
+    }
+
+    .header__cta-mobile {
+      display: inline-flex;
+    }
+
+    /* Show nav on larger screens */
+    @media (min-width: 768px) {
+      .nav {
+        display: block;
+      }
+      .header__cta {
+        display: inline-flex;
+      }
+      .header__cta-mobile {
+        display: none;
       }
     }
-  </script>
-</head>
 
-<body class="bg-coal text-white selection:bg-utnred/40 selection:text-white">
-  <!-- Navbar -->
-  <header class="fixed inset-x-0 top-0 z-50 bg-black/60 backdrop-blur border-b border-white/10">
-    <nav class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
-      <a href="#top" class="flex items-center gap-3">
-        <div class="h-9 w-9 rounded bg-utnred/90 ring-1 ring-white/10 grid place-items-center font-black">UTN</div>
-        <div class="leading-tight">
-          <div class="font-semibold tracking-tight">Formula SAE</div>
-          <div class="text-xs text-white/60">UTN FRBA</div>
+    /* ========================================
+       Buttons
+    ======================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn--primary {
+      background-color: var(--color-red);
+      color: var(--color-white);
+    }
+
+    .btn--primary:hover {
+      background-color: var(--color-red-hover);
+    }
+
+    .btn--secondary {
+      background-color: transparent;
+      color: var(--color-white-muted);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .btn--secondary:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+      color: var(--color-white);
+    }
+
+    .btn--small {
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+    }
+
+    /* ========================================
+       Hero Section
+    ======================================== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: var(--header-height);
+      overflow: hidden;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+    }
+
+    .hero__bg-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero__bg-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10, 10, 12, 0.75) 0%,
+        rgba(10, 10, 12, 0.6) 50%,
+        var(--color-black) 100%
+      );
+    }
+
+    .hero__glow {
+      position: absolute;
+      bottom: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 300px;
+      background: var(--color-red-glow);
+      filter: blur(100px);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero__container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero__content {
+      max-width: 700px;
+    }
+
+    .hero__tagline {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-white-subtle);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    .hero__title {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero__title-accent {
+      color: var(--color-red);
+    }
+
+    .hero__description {
+      font-size: 1.1rem;
+      color: var(--color-white-muted);
+      max-width: 550px;
+      margin-bottom: 2rem;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 3rem;
+    }
+
+    @media (min-width: 480px) {
+      .hero__actions {
+        flex-direction: row;
+      }
+    }
+
+    /* Hero Cards */
+    .hero__cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @media (min-width: 480px) {
+      .hero__cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .hero-card {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 1.25rem;
+    }
+
+    .hero-card__label {
+      font-size: 0.75rem;
+      color: var(--color-white-subtle);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-card__value {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    /* ========================================
+       Section Common Styles
+    ======================================== */
+    .section {
+      padding: 5rem 1.5rem;
+    }
+
+    .section--alt {
+      background: var(--color-gray-dark);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .section__container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .section__header {
+      max-width: 600px;
+      margin-bottom: 3rem;
+    }
+
+    .section__title {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .section__subtitle {
+      font-size: 1rem;
+      color: var(--color-white-muted);
+    }
+
+    /* ========================================
+       Project Section
+    ======================================== */
+    .pillars {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .pillars {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .pillar {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 1.75rem;
+      transition: border-color 0.2s ease;
+    }
+
+    .pillar:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .pillar__icon {
+      width: 48px;
+      height: 48px;
+      background: var(--color-red-glow);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .pillar__icon svg {
+      width: 24px;
+      height: 24px;
+      color: var(--color-red);
+    }
+
+    .pillar__title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--color-red);
+      margin-bottom: 0.5rem;
+    }
+
+    .pillar__text {
+      font-size: 0.9rem;
+      color: var(--color-white-muted);
+    }
+
+    /* Subsystems placeholder */
+    .subsystems-placeholder {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px dashed rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .subsystems-placeholder__text {
+      font-size: 0.9rem;
+      color: var(--color-white-subtle);
+    }
+
+    /* ========================================
+       Team Section
+    ======================================== */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (min-width: 900px) {
+      .team-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
+    .team-card {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .team-card:hover {
+      border-color: rgba(208, 0, 0, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .team-card__icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 1rem;
+      background: var(--color-gray);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .team-card__icon svg {
+      width: 28px;
+      height: 28px;
+      color: var(--color-red);
+    }
+
+    .team-card__title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .team-card__subtitle {
+      font-size: 0.8rem;
+      color: var(--color-white-subtle);
+    }
+
+    /* ========================================
+       Contact Section
+    ======================================== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+      }
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .contact-item__icon {
+      width: 44px;
+      height: 44px;
+      background: var(--color-gray);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-item__icon svg {
+      width: 22px;
+      height: 22px;
+      color: var(--color-red);
+    }
+
+    .contact-item__label {
+      font-size: 0.8rem;
+      color: var(--color-white-subtle);
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-item__value {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .contact-item__value a {
+      color: var(--color-white);
+      transition: color 0.2s ease;
+    }
+
+    .contact-item__value a:hover {
+      color: var(--color-red);
+    }
+
+    .contact-cta {
+      background: linear-gradient(135deg, var(--color-gray-dark) 0%, var(--color-gray) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 2.5rem;
+      text-align: center;
+    }
+
+    .contact-cta__title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-cta__text {
+      font-size: 0.95rem;
+      color: var(--color-white-muted);
+      margin-bottom: 1.5rem;
+      max-width: 350px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-cta .btn {
+      padding: 1rem 2rem;
+      font-size: 1rem;
+    }
+
+    /* ========================================
+       Footer
+    ======================================== */
+    .footer {
+      background: var(--color-black);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 3rem 1.5rem 2rem;
+    }
+
+    .footer__container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .footer__main {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    @media (min-width: 768px) {
+      .footer__main {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .footer__brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .footer__logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .footer__brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer__brand-title {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .footer__brand-subtitle {
+      font-size: 0.8rem;
+      color: var(--color-white-subtle);
+    }
+
+    .footer__links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer__link {
+      font-size: 0.9rem;
+      color: var(--color-white-muted);
+      transition: color 0.2s ease;
+    }
+
+    .footer__link:hover {
+      color: var(--color-white);
+    }
+
+    .footer__bottom {
+      padding-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .footer__bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+
+    .footer__copyright {
+      font-size: 0.8rem;
+      color: var(--color-white-subtle);
+    }
+
+    .footer__social {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .footer__social {
+        justify-content: flex-end;
+      }
+    }
+
+    .footer__social-link {
+      width: 36px;
+      height: 36px;
+      background: var(--color-gray);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s ease;
+    }
+
+    .footer__social-link:hover {
+      background: var(--color-gray-light);
+    }
+
+    .footer__social-link svg {
+      width: 18px;
+      height: 18px;
+      color: var(--color-white);
+    }
+
+    /* ========================================
+       Utility Classes
+    ======================================== */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- ====== HEADER ====== -->
+  <header class="header" role="banner">
+    <div class="header__container">
+      <a href="#home" class="header__logo" aria-label="UTN BA Motorsport - Ir al inicio">
+        <!-- Logo placeholder - reemplazar con logo real -->
+        <img src="assets/img/logo.png" alt="Logo UTN BA Motorsport" class="header__logo-img">
+        <div class="header__logo-text">
+          <span class="header__logo-title">UTN BA Motorsport</span>
+          <span class="header__logo-subtitle">Formula Student</span>
         </div>
       </a>
 
-      <div class="hidden md:flex items-center gap-6 text-sm text-white/80">
-        <a class="hover:text-white" href="#proyecto">Proyecto</a>
-        <a class="hover:text-white" href="#competencia">Competencia</a>
-        <a class="hover:text-white" href="#sumate">Sumate</a>
-        <a class="hover:text-white" href="#contacto">Contacto</a>
-        <a class="inline-flex items-center rounded bg-utnred px-4 py-2 font-semibold text-white hover:bg-utnred/90"
-           href="#sumate">
-          Sumate
-        </a>
-      </div>
+      <nav class="nav" role="navigation" aria-label="Navegacion principal">
+        <ul class="nav__list">
+          <li><a href="#home" class="nav__link">Home</a></li>
+          <li><a href="#proyecto" class="nav__link">Proyecto</a></li>
+          <li><a href="#equipo" class="nav__link">Equipo</a></li>
+          <li><a href="#contacto" class="nav__link">Contacto</a></li>
+        </ul>
+      </nav>
 
-      <!-- Mobile anchor (simple, no JS) -->
-      <a class="md:hidden inline-flex items-center rounded bg-utnred px-3 py-2 text-sm font-semibold hover:bg-utnred/90"
-         href="#sumate">Sumate</a>
-    </nav>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc1alaNgh02LCcnH14XTPEtV26GSElRdPnHIKzi2OvdNlc8oQ/viewform"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="btn btn--primary btn--small header__cta">
+        Sumate al equipo
+      </a>
+
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc1alaNgh02LCcnH14XTPEtV26GSElRdPnHIKzi2OvdNlc8oQ/viewform"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="btn btn--primary btn--small header__cta-mobile">
+        Sumate
+      </a>
+    </div>
   </header>
 
-  <main id="top">
-    <!-- Hero -->
-    <section class="relative min-h-[92vh] pt-20">
-      <!-- Background image -->
-      <div class="absolute inset-0">
+  <main>
+    <!-- ====== HERO / HOME ====== -->
+    <section id="home" class="hero" aria-labelledby="hero-title">
+      <div class="hero__bg">
         <img
           src="assets/img/formula_img.jpg"
-          alt="UTN FRBA Formula SAE"
-          class="h-full w-full object-cover"
-        />
-        <!-- Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-b from-black/75 via-black/60 to-coal"></div>
-        <!-- Subtle red glow -->
-        <div class="absolute -bottom-24 left-1/2 h-72 w-[42rem] -translate-x-1/2 rounded-full bg-utnred/25 blur-3xl"></div>
+          alt="Render del monoplaza Formula SAE electrico de UTN BA Motorsport"
+          class="hero__bg-image"
+        >
+        <div class="hero__bg-overlay" aria-hidden="true"></div>
+        <div class="hero__glow" aria-hidden="true"></div>
       </div>
 
-      <div class="relative mx-auto max-w-7xl px-4 py-16">
-        <div class="max-w-3xl">
-          
+      <div class="hero__container">
+        <div class="hero__content">
+          <span class="hero__tagline">UTN FRBA &middot; Formula SAE</span>
 
-          <h1 class="mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl">
-            Construimos un <span class="text-utnred">Fórmula SAE eléctrico</span>
-            para competir en Brasil 2027
+          <h1 id="hero-title" class="hero__title">
+            Diseñamos y construimos un
+            <span class="hero__title-accent">Formula SAE electrico</span>
           </h1>
 
-          <p class="mt-5 text-lg text-white/80">
-            Somos un equipo interdisciplinario de estudiantes de ingeniería que trabaja en el diseño, desarrollo y validación de un monoplaza eléctrico, integrando distintas áreas técnicas en un mismo proyecto.
+          <p class="hero__description">
+            Somos un equipo interdisciplinario de estudiantes de ingenieria de la UTN Buenos Aires.
+            Trabajamos en el diseño, desarrollo y validacion de un monoplaza electrico para competir internacionalmente.
           </p>
 
-          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a href="#sumate"
-               class="inline-flex items-center justify-center rounded bg-utnred px-6 py-3 font-semibold hover:bg-utnred/90">
+          <div class="hero__actions">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSc1alaNgh02LCcnH14XTPEtV26GSElRdPnHIKzi2OvdNlc8oQ/viewform"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="btn btn--primary">
               Quiero sumarme
             </a>
-            <a href="#competencia"
-               class="inline-flex items-center justify-center rounded border border-white/15 bg-black/30 px-6 py-3 font-semibold text-white/90 hover:bg-black/40">
-              Ver cómo se evalúa la competencia
+            <a href="#proyecto" class="btn btn--secondary">
+              Conoce el proyecto
             </a>
           </div>
 
-          <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <div class="rounded-lg border border-white/10 bg-black/30 p-4">
-              <div class="text-xs text-white/60">Meta</div>
-              <div class="mt-1 font-semibold">FSAE Brasil 2027</div>
+          <!-- Info Cards -->
+          <div class="hero__cards">
+            <div class="hero-card">
+              <div class="hero-card__label">Meta</div>
+              <div class="hero-card__value">FSAE Brasil 2027</div>
             </div>
-            <div class="rounded-lg border border-white/10 bg-black/30 p-4">
-              <div class="text-xs text-white/60">Categoría</div>
-              <div class="mt-1 font-semibold">Fórmula SAE Eléctrica</div>
+            <div class="hero-card">
+              <div class="hero-card__label">Categoria</div>
+              <div class="hero-card__value">Auto electrico</div>
+            </div>
+            <div class="hero-card">
+              <div class="hero-card__label">Tipo</div>
+              <div class="hero-card__value">Monoplaza</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Proyecto -->
-    <section id="proyecto" class="mx-auto max-w-7xl px-4 py-16">
-      <div class="max-w-3xl">
-        <h2 class="text-3xl font-bold tracking-tight">El proyecto</h2>
-        <p class="mt-4 text-white/75">
-          Formula SAE es una competencia universitaria donde se evalúa tanto el desempeño del auto como la calidad del proyecto.
-          Nuestro plan es desarrollar un monoplaza eléctrico desde UTN FRBA, con foco en ingeniería, iteración y validación.
-        </p>
-      </div>
+    <!-- ====== PROYECTO ====== -->
+    <section id="proyecto" class="section" aria-labelledby="proyecto-title">
+      <div class="section__container">
+        <header class="section__header">
+          <h2 id="proyecto-title" class="section__title">El Proyecto</h2>
+          <p class="section__subtitle">
+            Formula SAE es una competencia universitaria internacional donde se evalua tanto el desempeño del auto
+            como la calidad del proyecto de ingenieria. Nuestro objetivo es desarrollar un monoplaza electrico
+            competitivo desde UTN FRBA.
+          </p>
+        </header>
 
-      <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-        <div class="rounded-xl border border-white/10 bg-black/25 p-6">
-          <div class="text-utnred font-semibold">Diseño</div>
-          <div class="mt-2 text-white/80 text-sm">
-            Definimos arquitectura, requerimientos, seguridad y documentación desde el inicio.
-          </div>
-        </div>
-        <div class="rounded-xl border border-white/10 bg-black/25 p-6">
-          <div class="text-utnred font-semibold">Construcción</div>
-          <div class="mt-2 text-white/80 text-sm">
-            Fabricación y ensamble por etapas, con pruebas de integración y control de calidad.
-          </div>
-        </div>
-        <div class="rounded-xl border border-white/10 bg-black/25 p-6">
-          <div class="text-utnred font-semibold">Testing</div>
-          <div class="mt-2 text-white/80 text-sm">
-            Medimos, iteramos y optimizamos para llegar competitivos a las pruebas dinámicas.
-          </div>
-        </div>
-      </div>
-    </section>
+        <!-- Pilares -->
+        <div class="pillars">
+          <article class="pillar">
+            <div class="pillar__icon" aria-hidden="true">
+              <!-- Icono Diseño -->
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h3 class="pillar__title">Diseño</h3>
+            <p class="pillar__text">
+              Definimos arquitectura, requerimientos, seguridad y documentacion desde el inicio.
+              Cada decision esta respaldada por analisis y simulaciones.
+            </p>
+          </article>
 
-    <!-- Competencia -->
-    <section id="competencia" class="bg-black/30 border-y border-white/10">
-      <div class="mx-auto max-w-7xl px-4 py-16">
-        <div class="max-w-3xl">
-          <h2 class="text-3xl font-bold tracking-tight">¿Cómo es la competencia?</h2>
-          <p class="mt-4 text-white/75">
-            La competencia cuenta con <span class="text-white font-semibold">pruebas dinámicas y estáticas</span>.
-            Se evalúa que el auto sea rápido y competitivo, pero también que puedas presentarlo y defenderlo como proyecto.
+          <article class="pillar">
+            <div class="pillar__icon" aria-hidden="true">
+              <!-- Icono Construccion -->
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
+              </svg>
+            </div>
+            <h3 class="pillar__title">Construccion</h3>
+            <p class="pillar__text">
+              Fabricacion y ensamble por etapas, con pruebas de integracion y control de calidad
+              en cada fase del desarrollo.
+            </p>
+          </article>
+
+          <article class="pillar">
+            <div class="pillar__icon" aria-hidden="true">
+              <!-- Icono Validacion -->
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+              </svg>
+            </div>
+            <h3 class="pillar__title">Validacion</h3>
+            <p class="pillar__text">
+              Medimos, iteramos y optimizamos para llegar competitivos a las pruebas dinamicas.
+              Testing continuo es clave.
+            </p>
+          </article>
+        </div>
+
+        <!-- Placeholder para subsistemas -->
+        <div class="subsystems-placeholder">
+          <p class="subsystems-placeholder__text">
+            <!-- TODO: Agregar dropdown con subsistemas del auto (chasis, powertrain, aero, electronica, etc.) -->
+            Proximamente: detalle de subsistemas del vehiculo
           </p>
         </div>
+      </div>
+    </section>
 
-        <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div class="rounded-xl border border-white/10 bg-black/25 p-6">
-            <h3 class="text-xl font-semibold">Pruebas estáticas</h3>
-            <ul class="mt-4 space-y-2 text-white/75 text-sm">
-              <li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-utnred"></span>Presentación y defensa del diseño</li>
-              <li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-utnred"></span>Documentación y decisiones de ingeniería</li>
-              <li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-utnred"></span>Viabilidad y calidad del proyecto</li>
-            </ul>
-          </div>
+    <!-- ====== EQUIPO ====== -->
+    <section id="equipo" class="section section--alt" aria-labelledby="equipo-title">
+      <div class="section__container">
+        <header class="section__header">
+          <h2 id="equipo-title" class="section__title">El Equipo</h2>
+          <p class="section__subtitle">
+            Estudiantes de distintas carreras trabajando juntos en un proyecto real de ingenieria.
+            Cada area aporta conocimientos fundamentales para el desarrollo del monoplaza.
+          </p>
+        </header>
 
-          <div class="rounded-xl border border-white/10 bg-black/25 p-6">
-            <h3 class="text-xl font-semibold">Pruebas dinámicas</h3>
-            <ul class="mt-4 space-y-2 text-white/75 text-sm">
-              <li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-utnred"></span>Rendimiento en pista</li>
-              <li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-utnred"></span>Confiabilidad y consistencia</li>
-              <li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-utnred"></span>Optimización del conjunto (auto + piloto)</li>
-            </ul>
-          </div>
+        <!-- Grilla de roles -->
+        <div class="team-grid" role="list">
+          <article class="team-card" role="listitem">
+            <div class="team-card__icon" aria-hidden="true">
+              <!-- Icono Diseño -->
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
+              </svg>
+            </div>
+            <h3 class="team-card__title">Diseño</h3>
+            <p class="team-card__subtitle">CAD &amp; Ingenieria</p>
+          </article>
+
+          <article class="team-card" role="listitem">
+            <div class="team-card__icon" aria-hidden="true">
+              <!-- Icono Simulacion -->
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
+              </svg>
+            </div>
+            <h3 class="team-card__title">Simulacion</h3>
+            <p class="team-card__subtitle">CFD &amp; FEA</p>
+          </article>
+
+          <article class="team-card" role="listitem">
+            <div class="team-card__icon" aria-hidden="true">
+              <!-- Icono Industrial -->
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
+              </svg>
+            </div>
+            <h3 class="team-card__title">Industrial</h3>
+            <p class="team-card__subtitle">Manufactura &amp; Procesos</p>
+          </article>
+
+          <article class="team-card" role="listitem">
+            <div class="team-card__icon" aria-hidden="true">
+              <!-- Icono Electronica -->
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z" />
+              </svg>
+            </div>
+            <h3 class="team-card__title">Electronica</h3>
+            <p class="team-card__subtitle">Hardware &amp; Firmware</p>
+          </article>
+
+          <article class="team-card" role="listitem">
+            <div class="team-card__icon" aria-hidden="true">
+              <!-- Icono Redes Sociales -->
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+              </svg>
+            </div>
+            <h3 class="team-card__title">Redes Sociales</h3>
+            <p class="team-card__subtitle">Comunicacion &amp; Marketing</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- Sumate -->
-    <section id="sumate" class="mx-auto max-w-7xl px-4 py-16">
-      <div class="grid grid-cols-1 gap-10 md:grid-cols-2 md:items-center">
-        <div>
-          <h2 class="text-3xl font-bold tracking-tight">Sumate al equipo</h2>
-          <p class="mt-4 text-white/75">
-            Estamos abriendo el equipo al público. Si sos estudiante de UTN FRBA y te interesa participar, dejá tus datos.
+    <!-- ====== CONTACTO ====== -->
+    <section id="contacto" class="section" aria-labelledby="contacto-title">
+      <div class="section__container">
+        <header class="section__header">
+          <h2 id="contacto-title" class="section__title">Contacto</h2>
+          <p class="section__subtitle">
+            Si tenes preguntas sobre el proyecto o queres saber mas sobre como participar, no dudes en escribirnos.
           </p>
+        </header>
 
-          <div class="mt-6 rounded-xl border border-white/10 bg-black/25 p-6">
-            <div class="text-sm text-white/60">Roles típicos</div>
-            <div class="mt-3 flex flex-wrap gap-2">
-              <span class="rounded-full border border-white/10 bg-black/30 px-3 py-1 text-xs text-white/80">Electrónica</span>
-              <span class="rounded-full border border-white/10 bg-black/30 px-3 py-1 text-xs text-white/80">Software</span>
-              <span class="rounded-full border border-white/10 bg-black/30 px-3 py-1 text-xs text-white/80">Powertrain</span>
-              <span class="rounded-full border border-white/10 bg-black/30 px-3 py-1 text-xs text-white/80">Chasis</span>
-              <span class="rounded-full border border-white/10 bg-black/30 px-3 py-1 text-xs text-white/80">Aero</span>
-              <span class="rounded-full border border-white/10 bg-black/30 px-3 py-1 text-xs text-white/80">Gestión / Sponsors</span>
+        <div class="contact-grid">
+          <!-- Info de contacto -->
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-item__icon" aria-hidden="true">
+                <!-- Icono Email -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                </svg>
+              </div>
+              <div>
+                <div class="contact-item__label">Email</div>
+                <div class="contact-item__value">
+                  <!-- Placeholder - reemplazar con email real -->
+                  <a href="mailto:contacto@utnbamotorsport.com">contacto@utnbamotorsport.com</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item__icon" aria-hidden="true">
+                <!-- Icono Instagram -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="contact-item__label">Instagram</div>
+                <div class="contact-item__value">
+                  <a href="https://www.instagram.com/utnbaformulastudent/" target="_blank" rel="noopener noreferrer">
+                    @utnbaformulastudent
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item__icon" aria-hidden="true">
+                <!-- Icono Ubicacion -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                </svg>
+              </div>
+              <div>
+                <div class="contact-item__label">Ubicacion</div>
+                <div class="contact-item__value">UTN FRBA, Buenos Aires, Argentina</div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Contact form (placeholder) -->
-        <div class="rounded-2xl border border-white/10 bg-black/30 p-6">
-          <h3 class="text-xl font-semibold">Contacto rápido</h3>
-          <p class="mt-2 text-sm text-white/70">
-            (Boceto) Podés reemplazar esto por un Google Form / Formspree cuando lo tengan.
-          </p>
-
-          <form class="mt-6 space-y-4" action="#" method="post">
-            <div>
-              <label class="block text-sm text-white/70">Nombre y apellido</label>
-              <input class="mt-2 w-full rounded-lg bg-black/40 border border-white/10 px-4 py-3 outline-none focus:border-utnred/70"
-                     placeholder="Tu nombre" />
-            </div>
-            <div>
-              <label class="block text-sm text-white/70">Email</label>
-              <input class="mt-2 w-full rounded-lg bg-black/40 border border-white/10 px-4 py-3 outline-none focus:border-utnred/70"
-                     placeholder="tu@mail.com" />
-            </div>
-            <div>
-              <label class="block text-sm text-white/70">Interés</label>
-              <input class="mt-2 w-full rounded-lg bg-black/40 border border-white/10 px-4 py-3 outline-none focus:border-utnred/70"
-                     placeholder="Ej: Electrónica, Software, Sponsors..." />
-            </div>
-
-            <button type="button"
-                    class="w-full rounded-lg bg-utnred px-6 py-3 font-semibold hover:bg-utnred/90">
-              Enviar (placeholder)
-            </button>
-          </form>
+          <!-- CTA para sumarse -->
+          <div class="contact-cta">
+            <h3 class="contact-cta__title">Sumate al equipo</h3>
+            <p class="contact-cta__text">
+              Si sos estudiante de UTN FRBA y te interesa participar en el proyecto, completa el formulario.
+            </p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSc1alaNgh02LCcnH14XTPEtV26GSElRdPnHIKzi2OvdNlc8oQ/viewform"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="btn btn--primary">
+              Completar formulario
+            </a>
+          </div>
         </div>
       </div>
     </section>
-
-    <!-- Footer -->
-    <footer id="contacto" class="border-t border-white/10 bg-black/40">
-      <div class="mx-auto max-w-7xl px-4 py-10">
-        <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <div>
-            <div class="font-semibold">UTN FRBA Formula SAE</div>
-            <div class="text-sm text-white/60">Equipo iniciado en 2025 · Objetivo: FSAE Brasil 2027 · EV</div>
-          </div>
-          <div class="flex gap-4 text-sm text-white/70">
-            <a class="hover:text-white" href="#top">Inicio</a>
-            <a class="hover:text-white" href="#proyecto">Proyecto</a>
-            <a class="hover:text-white" href="#competencia">Competencia</a>
-            <a class="hover:text-white" href="#sumate">Sumate</a>
-          </div>
-        </div>
-
-        <div class="mt-8 text-xs text-white/50">
-          © <span id="y"></span> UTN FRBA Formula SAE · Boceto de landing
-        </div>
-      </div>
-
-      <script>
-        document.getElementById("y").textContent = new Date().getFullYear();
-      </script>
-    </footer>
   </main>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__container">
+      <div class="footer__main">
+        <div class="footer__brand">
+          <!-- Logo placeholder - reemplazar con logo real -->
+          <img src="assets/img/logo.png" alt="Logo UTN BA Motorsport" class="footer__logo">
+          <div class="footer__brand-text">
+            <span class="footer__brand-title">UTN BA Motorsport</span>
+            <span class="footer__brand-subtitle">Formula Student Team</span>
+          </div>
+        </div>
+
+        <nav class="footer__links" aria-label="Enlaces del pie de pagina">
+          <a href="#home" class="footer__link">Home</a>
+          <a href="#proyecto" class="footer__link">Proyecto</a>
+          <a href="#equipo" class="footer__link">Equipo</a>
+          <a href="#contacto" class="footer__link">Contacto</a>
+        </nav>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">
+          &copy; <span id="current-year"></span> UTN BA Motorsport &middot; Objetivo: FSAE Brasil 2027
+        </p>
+
+        <div class="footer__social">
+          <a href="https://www.instagram.com/utnbaformulastudent/"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="footer__social-link"
+             aria-label="Seguinos en Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript minimal -->
+  <script>
+    // Actualizar año en el footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Smooth scroll para navegacion (fallback para navegadores antiguos)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
