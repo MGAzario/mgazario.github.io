@@ -148,6 +148,71 @@
       color: var(--color-white);
     }
 
+    /* Dropdown */
+    .nav__item {
+      position: relative;
+    }
+
+    .nav__dropdown-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--color-white-muted);
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .nav__dropdown-toggle:hover {
+      color: var(--color-white);
+    }
+
+    .nav__dropdown-toggle svg {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.2s ease;
+    }
+
+    .nav__item:hover .nav__dropdown-toggle svg {
+      transform: rotate(180deg);
+    }
+
+    .nav__dropdown {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      min-width: 200px;
+      padding: 0.5rem 0;
+      margin-top: 0.75rem;
+      background: rgba(18, 18, 20, 0.95);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+
+    .nav__item:hover .nav__dropdown {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nav__dropdown-link {
+      display: block;
+      padding: 0.6rem 1.25rem;
+      font-size: 0.85rem;
+      color: var(--color-white-muted);
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .nav__dropdown-link:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--color-white);
+    }
+
     .header__cta {
       display: inline-flex;
     }
@@ -747,7 +812,22 @@
         <ul class="nav__list">
           <li><a href="#home" class="nav__link">Home</a></li>
           <li><a href="#proyecto" class="nav__link">Proyecto</a></li>
-          <li><a href="#equipo" class="nav__link">Equipo</a></li>
+          <li class="nav__item">
+            <span class="nav__dropdown-toggle">
+              Equipo
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </span>
+            <div class="nav__dropdown">
+              <a href="equipo/diseno.html" class="nav__dropdown-link">Diseño</a>
+              <a href="equipo/simulacion.html" class="nav__dropdown-link">Simulación</a>
+              <a href="equipo/industrial.html" class="nav__dropdown-link">Industrial</a>
+              <a href="equipo/electronica.html" class="nav__dropdown-link">Electrónica</a>
+              <a href="equipo/redes.html" class="nav__dropdown-link">Redes Sociales</a>
+            </div>
+          </li>
+          <li><a href="nosotros.html" class="nav__link">Nosotros</a></li>
           <li><a href="#contacto" class="nav__link">Contacto</a></li>
         </ul>
       </nav>
@@ -1052,7 +1132,7 @@
         <nav class="footer__links" aria-label="Enlaces del pie de pagina">
           <a href="#home" class="footer__link">Home</a>
           <a href="#proyecto" class="footer__link">Proyecto</a>
-          <a href="#equipo" class="footer__link">Equipo</a>
+          <a href="nosotros.html" class="footer__link">Nosotros</a>
           <a href="#contacto" class="footer__link">Contacto</a>
         </nav>
       </div>
