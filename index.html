@@ -224,7 +224,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
+      object-position: center 40%;
     }
 
     .hero__bg-overlay {
@@ -232,23 +232,10 @@
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(10, 10, 12, 0.5) 0%,
-        rgba(10, 10, 12, 0.35) 50%,
+        rgba(10, 10, 12, 0.65) 0%,
+        rgba(10, 10, 12, 0.5) 50%,
         var(--color-black) 100%
       );
-    }
-
-    .hero__glow {
-      position: absolute;
-      bottom: -100px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 300px;
-      background: var(--color-red-glow);
-      filter: blur(100px);
-      border-radius: 50%;
-      pointer-events: none;
     }
 
     .hero__container {
@@ -784,7 +771,6 @@
           class="hero__bg-image"
         >
         <div class="hero__bg-overlay" aria-hidden="true"></div>
-        <div class="hero__glow" aria-hidden="true"></div>
       </div>
 
       <div class="hero__container">
