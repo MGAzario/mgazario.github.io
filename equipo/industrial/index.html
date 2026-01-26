@@ -56,13 +56,40 @@
 
     .gallery { padding: 4rem 1.5rem; }
     .gallery__container { max-width: var(--max-width); margin: 0 auto; }
-    .gallery__title { font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; }
-    .gallery__grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
-    @media (min-width: 640px) { .gallery__grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 900px) { .gallery__grid { grid-template-columns: repeat(3, 1fr); } }
-    .gallery__item { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 4/3; background: var(--color-gray); }
-    .gallery__item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
-    .gallery__item:hover img { transform: scale(1.05); }
+    .gallery__title { font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; text-align: center; }
+
+    .carousel { position: relative; max-width: 800px; margin: 0 auto; }
+    .carousel__viewport { position: relative; overflow: hidden; border-radius: 16px; background: var(--color-gray); aspect-ratio: 16/10; }
+    .carousel__track { display: flex; transition: transform 0.4s ease; height: 100%; }
+    .carousel__slide { min-width: 100%; height: 100%; }
+    .carousel__slide img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
+
+    .carousel__btn { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; background: rgba(0, 0, 0, 0.6); border: 1px solid rgba(255, 255, 255, 0.15); color: var(--color-white); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; z-index: 10; }
+    .carousel__btn:hover { background: rgba(0, 0, 0, 0.8); border-color: rgba(255, 255, 255, 0.3); }
+    .carousel__btn--prev { left: 1rem; }
+    .carousel__btn--next { right: 1rem; }
+    .carousel__btn svg { width: 24px; height: 24px; }
+
+    .carousel__dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1.5rem; }
+    .carousel__dot { width: 10px; height: 10px; border-radius: 50%; background: var(--color-gray-light); border: none; cursor: pointer; transition: all 0.2s ease; }
+    .carousel__dot--active { background: var(--color-red); transform: scale(1.2); }
+
+    .lightbox { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.95); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+    .lightbox--open { opacity: 1; visibility: visible; }
+    .lightbox__content { position: relative; max-width: 90vw; max-height: 90vh; }
+    .lightbox__img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; }
+    .lightbox__close { position: absolute; top: -50px; right: 0; width: 40px; height: 40px; background: transparent; border: none; color: var(--color-white); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .lightbox__close svg { width: 32px; height: 32px; }
+    .lightbox__nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: var(--color-white); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; }
+    .lightbox__nav:hover { background: rgba(255, 255, 255, 0.2); }
+    .lightbox__nav--prev { left: -70px; }
+    .lightbox__nav--next { right: -70px; }
+    .lightbox__nav svg { width: 24px; height: 24px; }
+
+    @media (max-width: 768px) {
+      .lightbox__nav--prev { left: 10px; }
+      .lightbox__nav--next { right: 10px; }
+    }
 
     .footer { background: var(--color-black); border-top: 1px solid rgba(255, 255, 255, 0.06); padding: 2rem 1.5rem; text-align: center; }
     .footer__container { max-width: var(--max-width); margin: 0 auto; }
@@ -97,9 +124,9 @@
         <h1 class="hero__title">Industrial</h1>
         <p class="hero__description">
           El equipo Industrial se encarga de la manufactura y los procesos de fabricación.
-          Definimos métodos de producción, seleccionamos materiales y coordinamos la
-          construcción física de cada componente. Trabajamos con técnicas de mecanizado,
-          soldadura, composites y manufactura aditiva para materializar el diseño.
+          Coordinamos la producción de piezas, gestionamos proveedores, definimos métodos
+          de fabricación y aseguramos la calidad de cada componente. Trabajamos con
+          mecanizado CNC, impresión 3D, fibra de carbono y otros procesos.
         </p>
       </div>
     </section>
@@ -107,20 +134,59 @@
     <section class="gallery">
       <div class="gallery__container">
         <h2 class="gallery__title">Galería</h2>
-        <div class="gallery__grid">
-          <div class="gallery__item">
-            <img src="../../assets/img/Taller1.png" alt="Trabajo en taller">
+
+        <div class="carousel">
+          <div class="carousel__viewport">
+            <div class="carousel__track">
+              <div class="carousel__slide">
+                <img src="../../assets/img/Taller1.png" alt="Trabajo en taller">
+              </div>
+              <div class="carousel__slide">
+                <img src="../../assets/img/Taller2.png" alt="Trabajo en taller">
+              </div>
+              <div class="carousel__slide">
+                <img src="../../assets/img/DisenioAuto.png" alt="Diseño del auto">
+              </div>
+            </div>
           </div>
-          <div class="gallery__item">
-            <img src="../../assets/img/Taller2.png" alt="Trabajo en taller">
-          </div>
-          <div class="gallery__item">
-            <img src="../../assets/img/DisenioAuto.png" alt="Diseño del auto">
-          </div>
+
+          <button class="carousel__btn carousel__btn--prev" aria-label="Anterior">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button class="carousel__btn carousel__btn--next" aria-label="Siguiente">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <div class="carousel__dots"></div>
         </div>
       </div>
     </section>
   </main>
+
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox__content">
+      <button class="lightbox__close" aria-label="Cerrar">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <button class="lightbox__nav lightbox__nav--prev" aria-label="Anterior">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <img class="lightbox__img" src="" alt="">
+      <button class="lightbox__nav lightbox__nav--next" aria-label="Siguiente">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+  </div>
 
   <footer class="footer">
     <div class="footer__container">
@@ -129,5 +195,68 @@
       </p>
     </div>
   </footer>
+
+  <script>
+    const track = document.querySelector('.carousel__track');
+    const slides = document.querySelectorAll('.carousel__slide');
+    const prevBtn = document.querySelector('.carousel__btn--prev');
+    const nextBtn = document.querySelector('.carousel__btn--next');
+    const dotsContainer = document.querySelector('.carousel__dots');
+    let currentIndex = 0;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'carousel__dot' + (i === 0 ? ' carousel__dot--active' : '');
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.carousel__dot');
+
+    function updateCarousel() {
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      dots.forEach((dot, i) => dot.classList.toggle('carousel__dot--active', i === currentIndex));
+    }
+
+    function goToSlide(index) { currentIndex = index; updateCarousel(); }
+
+    prevBtn.addEventListener('click', () => { currentIndex = (currentIndex - 1 + slides.length) % slides.length; updateCarousel(); });
+    nextBtn.addEventListener('click', () => { currentIndex = (currentIndex + 1) % slides.length; updateCarousel(); });
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('.lightbox__img');
+    const lightboxClose = lightbox.querySelector('.lightbox__close');
+    const lightboxPrev = lightbox.querySelector('.lightbox__nav--prev');
+    const lightboxNext = lightbox.querySelector('.lightbox__nav--next');
+    let lightboxIndex = 0;
+
+    const images = Array.from(slides).map(slide => ({ src: slide.querySelector('img').src, alt: slide.querySelector('img').alt }));
+
+    slides.forEach((slide, i) => {
+      slide.querySelector('img').addEventListener('click', () => { lightboxIndex = i; openLightbox(); });
+    });
+
+    function openLightbox() {
+      lightboxImg.src = images[lightboxIndex].src;
+      lightboxImg.alt = images[lightboxIndex].alt;
+      lightbox.classList.add('lightbox--open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() { lightbox.classList.remove('lightbox--open'); document.body.style.overflow = ''; }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+    lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); lightboxIndex = (lightboxIndex - 1 + images.length) % images.length; lightboxImg.src = images[lightboxIndex].src; lightboxImg.alt = images[lightboxIndex].alt; });
+    lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); lightboxIndex = (lightboxIndex + 1) % images.length; lightboxImg.src = images[lightboxIndex].src; lightboxImg.alt = images[lightboxIndex].alt; });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('lightbox--open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') lightboxPrev.click();
+      if (e.key === 'ArrowRight') lightboxNext.click();
+    });
+  </script>
 </body>
 </html>
