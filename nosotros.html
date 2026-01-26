@@ -47,17 +47,18 @@
 
     .main { padding-top: var(--header-height); }
 
-    /* Hero */
-    .hero { position: relative; min-height: 60vh; display: flex; align-items: center; overflow: hidden; }
-    .hero__bg { position: absolute; inset: 0; z-index: -1; }
-    .hero__bg-image { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
-    .hero__bg-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10, 10, 12, 0.7) 0%, rgba(10, 10, 12, 0.5) 50%, var(--color-black) 100%); }
-    .hero__container { max-width: var(--max-width); margin: 0 auto; padding: 4rem 1.5rem; position: relative; z-index: 1; }
-    .hero__back { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--color-white-muted); margin-bottom: 2rem; transition: color 0.2s ease; }
-    .hero__back:hover { color: var(--color-white); }
-    .hero__back svg { width: 18px; height: 18px; }
-    .hero__title { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1rem; }
-    .hero__title-accent { color: var(--color-red); }
+    /* Page Header */
+    .page-header { padding: 3rem 1.5rem 2rem; text-align: center; }
+    .page-header__container { max-width: var(--max-width); margin: 0 auto; }
+    .page-header__back { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--color-white-muted); margin-bottom: 1.5rem; transition: color 0.2s ease; }
+    .page-header__back:hover { color: var(--color-white); }
+    .page-header__back svg { width: 18px; height: 18px; }
+    .page-header__title { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; letter-spacing: -0.03em; color: var(--color-red); }
+
+    /* Hero Image */
+    .hero-image { padding: 0 1.5rem 3rem; }
+    .hero-image__container { max-width: var(--max-width); margin: 0 auto; }
+    .hero-image__img { width: 100%; border-radius: 16px; }
 
     /* Content Sections */
     .section { padding: 4rem 1.5rem; }
@@ -99,28 +100,30 @@
   </header>
 
   <main class="main">
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero__bg">
-        <img src="assets/img/Nosotros.png" alt="Equipo UTN FRBA Motorsport" class="hero__bg-image">
-        <div class="hero__bg-overlay"></div>
-      </div>
-      <div class="hero__container">
-        <a href="index.html" class="hero__back">
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="page-header__container">
+        <a href="index.html" class="page-header__back">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
           Volver al inicio
         </a>
-        <h1 class="hero__title">
-          <span class="hero__title-accent">Quiénes</span> somos
-        </h1>
+        <h1 class="page-header__title">Nosotros</h1>
+      </div>
+    </section>
+
+    <!-- Hero Image -->
+    <section class="hero-image">
+      <div class="hero-image__container">
+        <img src="assets/img/Nosotros.png" alt="Equipo UTN FRBA Motorsport" class="hero-image__img">
       </div>
     </section>
 
     <!-- Quiénes somos -->
     <section class="section">
       <div class="section__container">
+        <h2 class="section__title">Quiénes somos</h2>
         <p class="section__text">
           Somos un grupo de estudiantes de la Universidad Tecnológica Nacional, Facultad Regional Buenos Aires,
           unidos por una pasión en común: el automovilismo y la ingeniería. Nuestro objetivo es diseñar,
