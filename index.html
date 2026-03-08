@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="UTN FRBA Motorsport - Equipo Formula Student que diseña y construye un monoplaza eléctrico para competir en FSAE Brasil 2027">
+  <meta name="description" content="UTN FRBA Motorsport - Equipo Formula Student que diseña y fabrica un monoplaza eléctrico para competir en FSAE Brasil 2027">
   <title>UTN FRBA Motorsport</title>
    <link rel="icon" type="image/png" href="assets/img/logo.png">
   <!-- Google Fonts - Inter -->
@@ -481,7 +481,128 @@
       color: var(--color-white-muted);
     }
 
-    
+    /* ========================================
+       Roadmap
+    ======================================== */
+    .roadmap {
+      margin-top: 4rem;
+    }
+
+    .roadmap__title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      color: var(--color-white);
+    }
+
+    .roadmap__track {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    @media (min-width: 768px) {
+      .roadmap__track {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    .roadmap__line {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .roadmap__line {
+        display: block;
+        position: absolute;
+        top: 16px;
+        left: 24px;
+        right: 24px;
+        height: 2px;
+        background: var(--color-gray-light);
+      }
+    }
+
+    .roadmap__step {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    @media (min-width: 768px) {
+      .roadmap__step {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        flex: 1;
+        padding: 0;
+      }
+    }
+
+    .roadmap__dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--color-gray);
+      border: 2px solid var(--color-gray-light);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      transition: all 0.2s ease;
+    }
+
+    .roadmap__step--active .roadmap__dot {
+      background: var(--color-red);
+      border-color: var(--color-red);
+      box-shadow: 0 0 12px rgba(208, 0, 0, 0.4);
+    }
+
+    .roadmap__content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    @media (min-width: 768px) {
+      .roadmap__content {
+        margin-top: 1rem;
+      }
+    }
+
+    .roadmap__label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--color-white-subtle);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .roadmap__name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--color-white);
+    }
+
+    .roadmap__step--active .roadmap__name {
+      color: var(--color-red);
+    }
+
+    .roadmap__desc {
+      font-size: 0.8rem;
+      color: var(--color-white-subtle);
+      max-width: 160px;
+    }
+
+    @media (min-width: 768px) {
+      .roadmap__desc {
+        margin: 0 auto;
+      }
+    }
 
     /* ========================================
        Team Section
@@ -611,11 +732,17 @@
       color: var(--color-red);
     }
 
+    .contact-ctas {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
     .contact-cta {
       background: linear-gradient(135deg, var(--color-gray-dark) 0%, var(--color-gray) 100%);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 20px;
-      padding: 2.5rem;
+      padding: 2rem;
       text-align: center;
     }
 
@@ -811,7 +938,7 @@
               <a href="equipo/simulacion/" class="nav__dropdown-link">Simulación</a>
               <a href="equipo/industrial/" class="nav__dropdown-link">Industrial</a>
               <a href="equipo/electronica/" class="nav__dropdown-link">Electrónica</a>
-              <a href="equipo/redes/" class="nav__dropdown-link">Redes Sociales</a>
+              <a href="equipo/redes/" class="nav__dropdown-link">Comunicacion</a>
             </div>
           </li>
           <li><a href="nosotros.html" class="nav__link">Nosotros</a></li>
@@ -845,13 +972,12 @@
           <span class="hero__tagline">UTN FRBA &middot; Formula SAE</span>
 
           <h1 id="hero-title" class="hero__title">
-            Diseñamos y construimos un
+            Diseñamos y fabricamos un
             <span class="hero__title-accent">Formula SAE electrico</span>
           </h1>
 
           <p class="hero__description">
-            Somos un equipo interdisciplinario de estudiantes de ingenieria de la UTN Buenos Aires.
-            Trabajamos en el diseño, desarrollo y validacion de un monoplaza electrico para competir internacionalmente.
+            Somos un equipo interdisciplinario de estudiantes de ingenería de la UTN FRBA dedicado al diseño, desarrollo y validación de un monoplaza eléctrico. Nuestro objetivo es aplicar conocimientos de ingeniería en un proyecto real y competir a nivel internacional.
           </p>
 
           <div class="hero__actions">
@@ -915,12 +1041,12 @@
 
           <article class="pillar">
             <div class="pillar__icon" aria-hidden="true">
-              <!-- Icono Construccion -->
+              <!-- Icono Fabricacion -->
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
               </svg>
             </div>
-            <h3 class="pillar__title">Construccion</h3>
+            <h3 class="pillar__title">Fabricacion</h3>
             <p class="pillar__text">
               Fabricacion y ensamble por etapas, con pruebas de integracion y control de calidad
               en cada fase del desarrollo.
@@ -929,16 +1055,64 @@
 
           <article class="pillar">
             <div class="pillar__icon" aria-hidden="true">
-              <!-- Icono Validacion -->
+              <!-- Icono Electronica -->
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z" />
               </svg>
             </div>
-            <h3 class="pillar__title">Validacion</h3>
+            <h3 class="pillar__title">Electronica</h3>
             <p class="pillar__text">
-              Medimos, iteramos y optimizamos para llegar competitivos a las pruebas dinamicas.
+              Desarrollamos los sistemas eléctricos y electrónicos del monoplaza, desde el almacenamiento de energía hasta los sistemas de control y adquisición de datos.
             </p>
           </article>
+        </div>
+
+        <!-- Roadmap -->
+        <div class="roadmap">
+          <h3 class="roadmap__title">Etapas del proyecto</h3>
+          <div class="roadmap__track">
+            <div class="roadmap__line" aria-hidden="true"></div>
+            <div class="roadmap__step roadmap__step--active">
+              <div class="roadmap__dot"></div>
+              <div class="roadmap__content">
+                <span class="roadmap__label">Etapa 1</span>
+                <span class="roadmap__name">Diseño</span>
+                <span class="roadmap__desc">Arquitectura, requerimientos y simulaciones</span>
+              </div>
+            </div>
+            <div class="roadmap__step roadmap__step--active">
+              <div class="roadmap__dot"></div>
+              <div class="roadmap__content">
+                <span class="roadmap__label">Etapa 2</span>
+                <span class="roadmap__name">Fabricacion</span>
+                <span class="roadmap__desc">Manufactura y ensamble de componentes</span>
+              </div>
+            </div>
+            <div class="roadmap__step">
+              <div class="roadmap__dot"></div>
+              <div class="roadmap__content">
+                <span class="roadmap__label">Etapa 3</span>
+                <span class="roadmap__name">Electronica</span>
+                <span class="roadmap__desc">Accumulator &amp; BMS &middot; Alta Tension &middot; Baja Tension</span>
+              </div>
+            </div>
+            <div class="roadmap__step">
+              <div class="roadmap__dot"></div>
+              <div class="roadmap__content">
+                <span class="roadmap__label">Etapa 4</span>
+                <span class="roadmap__name">Validacion</span>
+                <span class="roadmap__desc">Testing, iteracion y puesta a punto</span>
+              </div>
+            </div>
+            <div class="roadmap__step">
+              <div class="roadmap__dot"></div>
+              <div class="roadmap__content">
+                <span class="roadmap__label">Etapa 5</span>
+                <span class="roadmap__name">Competencia</span>
+                <span class="roadmap__desc">FSAE Brasil 2027</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -947,7 +1121,7 @@
     <section id="equipo" class="section section--alt" aria-labelledby="equipo-title">
       <div class="section__container">
         <header class="section__header">
-          <h2 id="equipo-title" class="section__title">El Equipo</h2>
+          <h2 id="equipo-title" class="section__title">Nosotros</h2>
           <p class="section__subtitle">
             Estudiantes de distintas carreras trabajando juntos en un proyecto real de ingenieria.
             Cada area aporta conocimientos fundamentales para el desarrollo del monoplaza.
@@ -1002,13 +1176,13 @@
 
           <a href="equipo/redes/" class="team-card" role="listitem">
             <div class="team-card__icon" aria-hidden="true">
-              <!-- Icono Redes Sociales -->
+              <!-- Icono Comunicacion -->
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
               </svg>
             </div>
-            <h3 class="team-card__title">Redes Sociales</h3>
-            <p class="team-card__subtitle">Comunicacion &amp; Marketing</p>
+            <h3 class="team-card__title">Comunicacion</h3>
+            <p class="team-card__subtitle">Desarrollo de identidad visual</p>
           </a>
         </div>
       </div>
@@ -1076,18 +1250,30 @@
             </div>
           </div>
 
-          <!-- CTA para sumarse -->
-          <div class="contact-cta">
-            <h3 class="contact-cta__title">Sumate al equipo</h3>
-            <p class="contact-cta__text">
-              Si sos estudiante de UTN FRBA y te interesa participar en el proyecto, completa el formulario.
-            </p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSc1alaNgh02LCcnH14XTPEtV26GSElRdPnHIKzi2OvdNlc8oQ/viewform"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="btn btn--primary">
-              Completar formulario
-            </a>
+          <!-- CTAs -->
+          <div class="contact-ctas">
+            <div class="contact-cta">
+              <h3 class="contact-cta__title">Sumate al equipo</h3>
+              <p class="contact-cta__text">
+                Si sos estudiante de UTN FRBA y te interesa participar en el proyecto, completa el formulario.
+              </p>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSc1alaNgh02LCcnH14XTPEtV26GSElRdPnHIKzi2OvdNlc8oQ/viewform"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="btn btn--primary">
+                Completar formulario
+              </a>
+            </div>
+            <div class="contact-cta">
+              <h3 class="contact-cta__title">Queres ser sponsor?</h3>
+              <p class="contact-cta__text">
+                Acompaña al equipo y forma parte del proyecto. Escribinos para conocer las formas de colaborar.
+              </p>
+              <a href="mailto:nikoch@frba.utn.edu.ar"
+                 class="btn btn--secondary">
+                Contactanos
+              </a>
+            </div>
           </div>
         </div>
       </div>
