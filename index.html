@@ -6,27 +6,27 @@
   <meta name="description" content="UTN FRBA Motorsport - Equipo Formula Student que diseña y fabrica un monoplaza eléctrico para competir en FSAE Brasil 2027">
   <title>UTN FRBA Motorsport</title>
    <link rel="icon" type="image/png" href="assets/img/logo.png">
-  <!-- Google Fonts - Inter -->
+  <!-- Google Fonts - Unbounded -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     /* ========================================
        CSS Variables & Reset
     ======================================== */
     :root {
-      --color-black: #0a0a0c;
-      --color-gray-dark: #121214;
-      --color-gray: #1a1a1e;
-      --color-gray-light: #2a2a30;
-      --color-white: #ffffff;
-      --color-white-muted: rgba(255, 255, 255, 0.7);
-      --color-white-subtle: rgba(255, 255, 255, 0.5);
-      --color-red: #d00000;
-      --color-red-hover: #b00000;
-      --color-red-glow: rgba(208, 0, 0, 0.3);
-      --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --color-black: #151519;
+      --color-gray-dark: #1c1c21;
+      --color-gray: #232328;
+      --color-gray-light: #333339;
+      --color-white: #fcf6e6;
+      --color-white-muted: rgba(252, 246, 230, 0.7);
+      --color-white-subtle: rgba(252, 246, 230, 0.5);
+      --color-red: #dd0e0e;
+      --color-red-hover: #bb0c0c;
+      --color-red-glow: rgba(221, 14, 14, 0.3);
+      --font-family: 'Unbounded', sans-serif;
       --max-width: 1200px;
       --header-height: 70px;
     }
@@ -47,6 +47,10 @@
       color: var(--color-white);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-family);
     }
 
     img {
@@ -80,10 +84,10 @@
       left: 0;
       right: 0;
       z-index: 100;
-      background: rgba(10, 10, 12, 0.85);
+      background: rgba(21, 21, 25, 0.85);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(252, 246, 230, 0.08);
       height: var(--header-height);
     }
 
@@ -100,30 +104,13 @@
     .header__logo {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
     }
 
     .header__logo-img {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    .header__logo-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .header__logo-title {
-      font-weight: 700;
-      font-size: 0.95rem;
-      letter-spacing: -0.02em;
-    }
-
-    .header__logo-subtitle {
-      font-size: 0.75rem;
-      color: var(--color-white-subtle);
+      height: 42px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 6px;
     }
 
     .nav {
@@ -186,9 +173,9 @@
       min-width: 200px;
       padding: 0.5rem 0;
       margin-top: 0.75rem;
-      background: rgba(18, 18, 20, 0.95);
+      background: rgba(28, 28, 33, 0.95);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(252, 246, 230, 0.1);
       border-radius: 12px;
       opacity: 0;
       visibility: hidden;
@@ -209,7 +196,7 @@
     }
 
     .nav__dropdown-link:hover {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(252, 246, 230, 0.05);
       color: var(--color-white);
     }
 
@@ -254,11 +241,11 @@
     .btn--secondary {
       background-color: transparent;
       color: var(--color-white-muted);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(252, 246, 230, 0.15);
     }
 
     .btn--secondary:hover {
-      background-color: rgba(255, 255, 255, 0.05);
+      background-color: rgba(252, 246, 230, 0.05);
       color: var(--color-white);
     }
 
@@ -277,42 +264,62 @@
       align-items: center;
       padding-top: var(--header-height);
       overflow: hidden;
-    }
-
-    .hero__bg {
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-    }
-
-    .hero__bg-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 40%;
-    }
-
-    .hero__bg-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(10, 10, 12, 0.65) 0%,
-        rgba(10, 10, 12, 0.5) 50%,
-        var(--color-black) 100%
-      );
+      background: var(--color-black);
     }
 
     .hero__container {
       max-width: var(--max-width);
       margin: 0 auto;
       padding: 3rem 1.5rem;
-      position: relative;
-      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    @media (min-width: 768px) {
+      .hero__container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
     }
 
     .hero__content {
-      max-width: 700px;
+      max-width: 600px;
+      flex: 1;
+    }
+
+    .hero__logo {
+      flex-shrink: 0;
+      width: 200px;
+      max-width: 70%;
+    }
+
+    @media (min-width: 768px) {
+      .hero__logo {
+        width: 250px;
+        max-width: 100%;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .hero__logo {
+        width: 300px;
+      }
+    }
+
+    .hero__logo-img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      filter: drop-shadow(0 0 40px rgba(221, 14, 14, 0.15));
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .hero__logo:hover .hero__logo-img {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 60px rgba(221, 14, 14, 0.3));
     }
 
     .hero__tagline {
@@ -326,10 +333,10 @@
     }
 
     .hero__title {
-      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-size: clamp(1.85rem, 4.5vw, 2.75rem);
       font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -0.03em;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
       margin-bottom: 1.25rem;
     }
 
@@ -338,17 +345,18 @@
     }
 
     .hero__description {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: var(--color-white-muted);
-      max-width: 550px;
+      max-width: 520px;
       margin-bottom: 2rem;
+      line-height: 1.7;
     }
 
     .hero__actions {
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
     }
 
     @media (min-width: 480px) {
@@ -372,7 +380,7 @@
 
     .hero-card {
       background: rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(252, 246, 230, 0.1);
       border-radius: 12px;
       padding: 1.25rem;
     }
@@ -399,8 +407,8 @@
 
     .section--alt {
       background: var(--color-gray-dark);
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      border-top: 1px solid rgba(252, 246, 230, 0.06);
+      border-bottom: 1px solid rgba(252, 246, 230, 0.06);
     }
 
     .section__container {
@@ -414,9 +422,9 @@
     }
 
     .section__title {
-      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-size: clamp(1.6rem, 3.5vw, 2.1rem);
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
       margin-bottom: 1rem;
     }
 
@@ -442,14 +450,14 @@
 
     .pillar {
       background: rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(252, 246, 230, 0.08);
       border-radius: 16px;
       padding: 1.75rem;
       transition: border-color 0.2s ease;
     }
 
     .pillar:hover {
-      border-color: rgba(255, 255, 255, 0.15);
+      border-color: rgba(252, 246, 230, 0.15);
     }
 
     .pillar__icon {
@@ -470,8 +478,8 @@
     }
 
     .pillar__title {
-      font-size: 1.1rem;
-      font-weight: 600;
+      font-size: 1.2rem;
+      font-weight: 700;
       color: var(--color-red);
       margin-bottom: 0.5rem;
     }
@@ -489,8 +497,8 @@
     }
 
     .roadmap__title {
-      font-size: 1.25rem;
-      font-weight: 700;
+      font-size: 1.4rem;
+      font-weight: 800;
       text-align: center;
       margin-bottom: 2.5rem;
       color: var(--color-white);
@@ -559,7 +567,7 @@
     .roadmap__step--active .roadmap__dot {
       background: var(--color-red);
       border-color: var(--color-red);
-      box-shadow: 0 0 12px rgba(208, 0, 0, 0.4);
+      box-shadow: 0 0 12px rgba(221, 14, 14, 0.4);
     }
 
     .roadmap__content {
@@ -627,7 +635,7 @@
 
     .team-card {
       background: rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(252, 246, 230, 0.08);
       border-radius: 12px;
       padding: 1.5rem 1rem;
       text-align: center;
@@ -635,7 +643,7 @@
     }
 
     .team-card:hover {
-      border-color: rgba(208, 0, 0, 0.4);
+      border-color: rgba(221, 14, 14, 0.4);
       transform: translateY(-2px);
     }
 
@@ -740,15 +748,15 @@
 
     .contact-cta {
       background: linear-gradient(135deg, var(--color-gray-dark) 0%, var(--color-gray) 100%);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(252, 246, 230, 0.1);
       border-radius: 20px;
       padding: 2rem;
       text-align: center;
     }
 
     .contact-cta__title {
-      font-size: 1.5rem;
-      font-weight: 700;
+      font-size: 1.6rem;
+      font-weight: 800;
       margin-bottom: 0.75rem;
     }
 
@@ -771,7 +779,7 @@
     ======================================== */
     .footer {
       background: var(--color-black);
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-top: 1px solid rgba(252, 246, 230, 0.06);
       padding: 3rem 1.5rem 2rem;
     }
 
@@ -785,7 +793,7 @@
       flex-direction: column;
       gap: 2rem;
       padding-bottom: 2rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(252, 246, 230, 0.06);
     }
 
     @media (min-width: 768px) {
@@ -799,29 +807,13 @@
     .footer__brand {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
     }
 
     .footer__logo {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    .footer__brand-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .footer__brand-title {
-      font-weight: 700;
-      font-size: 1rem;
-    }
-
-    .footer__brand-subtitle {
-      font-size: 0.8rem;
-      color: var(--color-white-subtle);
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 6px;
     }
 
     .footer__links {
@@ -914,15 +906,10 @@
   <header class="header" role="banner">
     <div class="header__container">
       <a href="#home" class="header__logo" aria-label="UTN BA Motorsport - Ir al inicio">
-        <!-- Logo placeholder - reemplazar con logo real -->
-        <img src="assets/img/logo.png" alt="Logo UTN BA Motorsport" class="header__logo-img">
-        <div class="header__logo-text">
-          <span class="header__logo-title">UTN BA Motorsport</span>
-          <span class="header__logo-subtitle">Formula Student</span>
-        </div>
+        <img src="assets/img/logo.png" alt="UTN BA Motorsport" class="header__logo-img">
       </a>
 
-      <nav class="nav" role="navigation" aria-label="Navegacion principal">
+      <nav class="nav" role="navigation" aria-label="Navegación principal">
         <ul class="nav__list">
           <li><a href="#home" class="nav__link">Home</a></li>
           <li><a href="#proyecto" class="nav__link">Proyecto</a></li>
@@ -938,7 +925,7 @@
               <a href="equipo/simulacion/" class="nav__dropdown-link">Simulación</a>
               <a href="equipo/industrial/" class="nav__dropdown-link">Industrial</a>
               <a href="equipo/electronica/" class="nav__dropdown-link">Electrónica</a>
-              <a href="equipo/redes/" class="nav__dropdown-link">Comunicacion</a>
+              <a href="equipo/redes/" class="nav__dropdown-link">Comunicación</a>
             </div>
           </li>
           <li><a href="nosotros.html" class="nav__link">Nosotros</a></li>
@@ -958,26 +945,22 @@
   <main>
     <!-- ====== HERO / HOME ====== -->
     <section id="home" class="hero" aria-labelledby="hero-title">
-      <div class="hero__bg">
-        <img
-          src="assets/img/DisenioAuto.png"
-          alt="Render del monoplaza Formula SAE electrico de UTN BA Motorsport"
-          class="hero__bg-image"
-        >
-        <div class="hero__bg-overlay" aria-hidden="true"></div>
-      </div>
-
       <div class="hero__container">
+        <!-- Logo -->
+        <div class="hero__logo">
+          <img src="assets/img/logo.png" alt="UTN BA Motorsport" class="hero__logo-img">
+        </div>
+
         <div class="hero__content">
           <span class="hero__tagline">UTN FRBA &middot; Formula SAE</span>
 
           <h1 id="hero-title" class="hero__title">
             Diseñamos y fabricamos un
-            <span class="hero__title-accent">Formula SAE electrico</span>
+            <span class="hero__title-accent">Fórmula SAE eléctrico</span>
           </h1>
 
           <p class="hero__description">
-            Somos un equipo interdisciplinario de estudiantes de ingenería de la UTN FRBA dedicado al diseño, desarrollo y validación de un monoplaza eléctrico. Nuestro objetivo es aplicar conocimientos de ingeniería en un proyecto real y competir a nivel internacional.
+            Somos un equipo interdisciplinario de estudiantes de ingeniería de la UTN FRBA dedicado al diseño, desarrollo y validación de un monoplaza eléctrico. Nuestro objetivo es aplicar conocimientos de ingeniería en un proyecto real y competir a nivel internacional.
           </p>
 
           <div class="hero__actions">
@@ -999,8 +982,8 @@
               <div class="hero-card__value">FSAE Brasil 2027</div>
             </div>
             <div class="hero-card">
-              <div class="hero-card__label">Categoria</div>
-              <div class="hero-card__value">Auto electrico</div>
+              <div class="hero-card__label">Categoría</div>
+              <div class="hero-card__value">Auto eléctrico</div>
             </div>
             <div class="hero-card">
               <div class="hero-card__label">Tipo</div>
@@ -1017,8 +1000,8 @@
         <header class="section__header">
           <h2 id="proyecto-title" class="section__title">El Proyecto</h2>
           <p class="section__subtitle">
-            Formula SAE es una competencia universitaria internacional donde se evalua tanto el desempeño del auto
-            como la calidad del proyecto de ingenieria. Nuestro objetivo es desarrollar un monoplaza electrico
+            Fórmula SAE es una competencia universitaria internacional donde se evalúa tanto el desempeño del auto
+            como la calidad del proyecto de ingeniería. Nuestro objetivo es desarrollar un monoplaza eléctrico
             competitivo desde UTN FRBA.
           </p>
         </header>
@@ -1034,8 +1017,8 @@
             </div>
             <h3 class="pillar__title">Diseño</h3>
             <p class="pillar__text">
-              Definimos arquitectura, requerimientos, seguridad y documentacion desde el inicio.
-              Cada decision esta respaldada por analisis y simulaciones.
+              Definimos arquitectura, requerimientos, seguridad y documentación desde el inicio.
+              Cada decisión está respaldada por análisis y simulaciones.
             </p>
           </article>
 
@@ -1046,9 +1029,9 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
               </svg>
             </div>
-            <h3 class="pillar__title">Fabricacion</h3>
+            <h3 class="pillar__title">Fabricación</h3>
             <p class="pillar__text">
-              Fabricacion y ensamble por etapas, con pruebas de integracion y control de calidad
+              Fabricación y ensamble por etapas, con pruebas de integración y control de calidad
               en cada fase del desarrollo.
             </p>
           </article>
@@ -1060,7 +1043,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z" />
               </svg>
             </div>
-            <h3 class="pillar__title">Electronica</h3>
+            <h3 class="pillar__title">Electrónica</h3>
             <p class="pillar__text">
               Desarrollamos los sistemas eléctricos y electrónicos del monoplaza, desde el almacenamiento de energía hasta los sistemas de control y adquisición de datos.
             </p>
@@ -1069,7 +1052,7 @@
 
         <!-- Roadmap -->
         <div class="roadmap">
-          <h3 class="roadmap__title">Etapas del proyecto</h3>
+          <h3 class="roadmap__title">Roadmap del proyecto</h3>
           <div class="roadmap__track">
             <div class="roadmap__line" aria-hidden="true"></div>
             <div class="roadmap__step roadmap__step--active">
@@ -1084,7 +1067,7 @@
               <div class="roadmap__dot"></div>
               <div class="roadmap__content">
                 <span class="roadmap__label">Etapa 2</span>
-                <span class="roadmap__name">Fabricacion</span>
+                <span class="roadmap__name">Fabricación</span>
                 <span class="roadmap__desc">Manufactura y ensamble de componentes</span>
               </div>
             </div>
@@ -1092,22 +1075,14 @@
               <div class="roadmap__dot"></div>
               <div class="roadmap__content">
                 <span class="roadmap__label">Etapa 3</span>
-                <span class="roadmap__name">Electronica</span>
-                <span class="roadmap__desc">Accumulator &amp; BMS &middot; Alta Tension &middot; Baja Tension</span>
+                <span class="roadmap__name">Validación</span>
+                <span class="roadmap__desc">Testing, iteración y puesta a punto</span>
               </div>
             </div>
             <div class="roadmap__step">
               <div class="roadmap__dot"></div>
               <div class="roadmap__content">
                 <span class="roadmap__label">Etapa 4</span>
-                <span class="roadmap__name">Validacion</span>
-                <span class="roadmap__desc">Testing, iteracion y puesta a punto</span>
-              </div>
-            </div>
-            <div class="roadmap__step">
-              <div class="roadmap__dot"></div>
-              <div class="roadmap__content">
-                <span class="roadmap__label">Etapa 5</span>
                 <span class="roadmap__name">Competencia</span>
                 <span class="roadmap__desc">FSAE Brasil 2027</span>
               </div>
@@ -1123,8 +1098,8 @@
         <header class="section__header">
           <h2 id="equipo-title" class="section__title">Nosotros</h2>
           <p class="section__subtitle">
-            Estudiantes de distintas carreras trabajando juntos en un proyecto real de ingenieria.
-            Cada area aporta conocimientos fundamentales para el desarrollo del monoplaza.
+            Estudiantes de distintas carreras trabajando juntos en un proyecto real de ingeniería.
+            Cada área aporta conocimientos fundamentales para el desarrollo del monoplaza.
           </p>
         </header>
 
@@ -1138,7 +1113,7 @@
               </svg>
             </div>
             <h3 class="team-card__title">Diseño</h3>
-            <p class="team-card__subtitle">CAD &amp; Ingenieria</p>
+            <p class="team-card__subtitle">CAD &amp; Ingeniería</p>
           </a>
 
           <a href="equipo/simulacion/" class="team-card" role="listitem">
@@ -1148,7 +1123,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
               </svg>
             </div>
-            <h3 class="team-card__title">Simulacion</h3>
+            <h3 class="team-card__title">Simulación</h3>
             <p class="team-card__subtitle">CFD &amp; FEA</p>
           </a>
 
@@ -1170,7 +1145,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z" />
               </svg>
             </div>
-            <h3 class="team-card__title">Electronica</h3>
+            <h3 class="team-card__title">Electrónica</h3>
             <p class="team-card__subtitle">Hardware &amp; Firmware</p>
           </a>
 
@@ -1181,7 +1156,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
               </svg>
             </div>
-            <h3 class="team-card__title">Comunicacion</h3>
+            <h3 class="team-card__title">Comunicación</h3>
             <p class="team-card__subtitle">Desarrollo de identidad visual</p>
           </a>
         </div>
@@ -1194,7 +1169,7 @@
         <header class="section__header">
           <h2 id="contacto-title" class="section__title">Contacto</h2>
           <p class="section__subtitle">
-            Si tenes preguntas sobre el proyecto o queres saber mas sobre como participar, no dudes en escribirnos.
+            Si tenés preguntas sobre el proyecto o querés saber más sobre cómo participar, no dudes en escribirnos.
           </p>
         </header>
 
@@ -1242,7 +1217,7 @@
                 </svg>
               </div>
               <div>
-                <div class="contact-item__label">Ubicacion</div>
+                <div class="contact-item__label">Ubicación</div>
                 <div class="contact-item__value">
                   <a href="https://maps.app.goo.gl/ZY6e5W5ZQ9Pxhg1o7" target="_blank" rel="noopener noreferrer">UTN FRBA, Buenos Aires, Argentina</a>
                 </div>
@@ -1265,9 +1240,9 @@
               </a>
             </div>
             <div class="contact-cta">
-              <h3 class="contact-cta__title">Queres ser sponsor?</h3>
+              <h3 class="contact-cta__title">¿Querés ser sponsor?</h3>
               <p class="contact-cta__text">
-                Acompaña al equipo y forma parte del proyecto. Escribinos para conocer las formas de colaborar.
+                Acompañá al equipo y formá parte del proyecto. Escribinos para conocer las formas de colaborar.
               </p>
               <a href="mailto:nikoch@frba.utn.edu.ar"
                  class="btn btn--secondary">
@@ -1285,15 +1260,10 @@
     <div class="footer__container">
       <div class="footer__main">
         <div class="footer__brand">
-          <!-- Logo placeholder - reemplazar con logo real -->
-          <img src="assets/img/logo.png" alt="Logo UTN BA Motorsport" class="footer__logo">
-          <div class="footer__brand-text">
-            <span class="footer__brand-title">UTN BA Motorsport</span>
-            <span class="footer__brand-subtitle">Formula Student Team</span>
-          </div>
+          <img src="assets/img/logo.png" alt="UTN BA Motorsport" class="footer__logo">
         </div>
 
-        <nav class="footer__links" aria-label="Enlaces del pie de pagina">
+        <nav class="footer__links" aria-label="Enlaces del pie de página">
           <a href="#home" class="footer__link">Home</a>
           <a href="#proyecto" class="footer__link">Proyecto</a>
           <a href="nosotros.html" class="footer__link">Nosotros</a>
@@ -1326,7 +1296,7 @@
     // Actualizar año en el footer
     document.getElementById('current-year').textContent = new Date().getFullYear();
 
-    // Smooth scroll para navegacion (fallback para navegadores antiguos)
+    // Smooth scroll para navegación (fallback para navegadores antiguos)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
