@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Comunicacion - UTN FRBA Motorsport Formula Student">
-  <title>Comunicacion | UTN FRBA Motorsport</title>
+  <meta name="description" content="Comunicación - UTN FRBA Motorsport Formula Student">
+  <title>Comunicación | UTN FRBA Motorsport</title>
   <link rel="icon" type="image/png" href="../../assets/img/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
       --color-red: #dd0e0e;
       --color-red-hover: #bb0c0c;
       --font-family: 'Unbounded', sans-serif;
-      --max-width: 1200px;
+      --max-width: 1400px;
       --header-height: 70px;
     }
 
@@ -33,14 +33,34 @@
     h1, h2, h3, h4, h5, h6 { font-family: var(--font-family); }
     img { max-width: 100%; height: auto; display: block; }
 
-    .header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(21, 21, 25, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(252, 246, 230, 0.08); height: var(--header-height); }
-    .header__container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    /* Header */
+    .header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(21, 21, 25, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(252, 246, 230, 0.08); height: var(--header-height); }
+    .header__container { max-width: var(--max-width); margin: 0 auto; padding: 0 2rem; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    @media (min-width: 1200px) { .header__container { padding: 0 3rem; } }
     .header__logo { display: flex; align-items: center; }
     .header__logo-img { height: 42px; width: auto; object-fit: contain; border-radius: 6px; }
+
+    /* Nav */
+    .nav { display: none; }
+    .nav__list { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav__link { font-size: 0.9rem; font-weight: 500; color: var(--color-white-muted); transition: color 0.2s ease; }
+    .nav__link:hover { color: var(--color-white); }
+    .nav__item { position: relative; }
+    .nav__dropdown-toggle { display: flex; align-items: center; gap: 0.35rem; font-size: 0.9rem; font-weight: 500; color: var(--color-white-muted); cursor: pointer; transition: color 0.2s ease; }
+    .nav__dropdown-toggle:hover { color: var(--color-white); }
+    .nav__dropdown-toggle svg { width: 14px; height: 14px; transition: transform 0.2s ease; }
+    .nav__item:hover .nav__dropdown-toggle svg { transform: rotate(180deg); }
+    .nav__dropdown { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); min-width: 200px; padding: 0.5rem 0; margin-top: 0.75rem; background: rgba(28, 28, 33, 0.95); backdrop-filter: blur(12px); border: 1px solid rgba(252, 246, 230, 0.1); border-radius: 12px; opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; }
+    .nav__item:hover .nav__dropdown { opacity: 1; visibility: visible; }
+    .nav__dropdown-link { display: block; padding: 0.6rem 1.25rem; font-size: 0.85rem; color: var(--color-white-muted); transition: background-color 0.15s ease, color 0.15s ease; }
+    .nav__dropdown-link:hover { background: rgba(252, 246, 230, 0.05); color: var(--color-white); }
+    .header__cta { display: inline-flex; }
+    @media (min-width: 768px) { .nav { display: block; } }
 
     .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.5rem 1rem; font-family: inherit; font-size: 0.85rem; font-weight: 600; border-radius: 8px; border: none; cursor: pointer; transition: all 0.2s ease; }
     .btn--primary { background-color: var(--color-red); color: var(--color-white); }
     .btn--primary:hover { background-color: var(--color-red-hover); }
+    .btn--small { padding: 0.5rem 1rem; font-size: 0.85rem; }
 
     .main { padding-top: var(--header-height); }
 
@@ -52,6 +72,7 @@
     .hero__title { font-size: clamp(2.75rem, 6vw, 4.5rem); font-weight: 900; letter-spacing: -0.02em; margin-bottom: 1.5rem; color: var(--color-red); }
     .hero__description { font-size: 1.15rem; color: var(--color-white-muted); max-width: 700px; margin: 0 auto; line-height: 1.7; }
 
+    /* Carousel */
     .gallery { padding: 4rem 1.5rem; }
     .gallery__container { max-width: var(--max-width); margin: 0 auto; }
     .gallery__title { font-size: 1.75rem; font-weight: 800; margin-bottom: 2rem; text-align: center; }
@@ -72,6 +93,7 @@
     .carousel__dot { width: 10px; height: 10px; border-radius: 50%; background: var(--color-gray-light); border: none; cursor: pointer; transition: all 0.2s ease; }
     .carousel__dot--active { background: var(--color-red); transform: scale(1.2); }
 
+    /* Lightbox */
     .lightbox { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.95); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
     .lightbox--open { opacity: 1; visibility: visible; }
     .lightbox__content { position: relative; max-width: 90vw; max-height: 90vh; }
@@ -89,22 +111,29 @@
       .lightbox__nav--next { right: 10px; }
     }
 
-    .footer { background: var(--color-black); border-top: 1px solid rgba(252, 246, 230, 0.06); padding: 2rem 1.5rem; text-align: center; }
+    /* Footer */
+    .footer { background: var(--color-black); border-top: 1px solid rgba(252, 246, 230, 0.06); padding: 3rem 1.5rem 2rem; }
     .footer__container { max-width: var(--max-width); margin: 0 auto; }
-    .footer__text { font-size: 0.85rem; color: var(--color-white-subtle); }
-    .footer__text a { color: var(--color-white-muted); transition: color 0.2s ease; }
-    .footer__text a:hover { color: var(--color-white); }
+    .footer__main { display: flex; flex-direction: column; gap: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(252, 246, 230, 0.06); }
+    @media (min-width: 768px) { .footer__main { flex-direction: row; justify-content: space-between; align-items: center; } }
+    .footer__brand { display: flex; align-items: center; }
+    .footer__logo { height: 44px; width: auto; object-fit: contain; border-radius: 6px; }
+    .footer__links { display: flex; gap: 1.5rem; }
+    .footer__link { font-size: 0.9rem; color: var(--color-white-muted); transition: color 0.2s ease; }
+    .footer__link:hover { color: var(--color-white); }
+    .footer__bottom { padding-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem; text-align: center; }
+    @media (min-width: 768px) { .footer__bottom { flex-direction: row; justify-content: space-between; text-align: left; } }
+    .footer__copyright { font-size: 0.8rem; color: var(--color-white-subtle); }
+    .footer__social { display: flex; justify-content: center; gap: 1rem; }
+    @media (min-width: 768px) { .footer__social { justify-content: flex-end; } }
+    .footer__social-link { width: 36px; height: 36px; background: var(--color-gray); border-radius: 8px; display: flex; align-items: center; justify-content: center; transition: background-color 0.2s ease; }
+    .footer__social-link:hover { background: var(--color-gray-light); }
+    .footer__social-link svg { width: 18px; height: 18px; color: var(--color-white); }
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="header__container">
-      <a href="../../index.html" class="header__logo">
-        <img src="../../assets/img/logo.png" alt="UTN BA Motorsport" class="header__logo-img">
-      </a>
-      <a href="../../index.html#contacto" class="btn btn--primary">Sumate al equipo</a>
-    </div>
-  </header>
+  <!-- Header cargado dinámicamente -->
+  <div id="site-header"></div>
 
   <main class="main">
     <section class="hero">
@@ -115,7 +144,7 @@
           </svg>
           Volver al equipo
         </a>
-        <h1 class="hero__title">Comunicacion</h1>
+        <h1 class="hero__title">Comunicación</h1>
         <p class="hero__description">
           Construimos la identidad del equipo y difundimos el proyecto mediante contenido, redes y eventos, fortaleciendo la relación con la comunidad y nuestros sponsors.
         </p>
@@ -158,6 +187,7 @@
     </section>
   </main>
 
+  <!-- Lightbox -->
   <div class="lightbox" id="lightbox">
     <div class="lightbox__content">
       <button class="lightbox__close" aria-label="Cerrar">
@@ -179,15 +209,14 @@
     </div>
   </div>
 
-  <footer class="footer">
-    <div class="footer__container">
-      <p class="footer__text">
-        &copy; 2025 UTN BA Motorsport &middot; <a href="../../index.html">Volver al inicio</a>
-      </p>
-    </div>
-  </footer>
+  <!-- Footer cargado dinámicamente -->
+  <div id="site-footer"></div>
+
+  <!-- Componentes compartidos -->
+  <script src="../../components/load-components.js"></script>
 
   <script>
+    // Carousel
     const track = document.querySelector('.carousel__track');
     const slides = document.querySelectorAll('.carousel__slide');
     const prevBtn = document.querySelector('.carousel__btn--prev');
@@ -195,6 +224,7 @@
     const dotsContainer = document.querySelector('.carousel__dots');
     let currentIndex = 0;
 
+    // Create dots
     slides.forEach((_, i) => {
       const dot = document.createElement('button');
       dot.className = 'carousel__dot' + (i === 0 ? ' carousel__dot--active' : '');
@@ -206,14 +236,27 @@
 
     function updateCarousel() {
       track.style.transform = `translateX(-${currentIndex * 100}%)`;
-      dots.forEach((dot, i) => dot.classList.toggle('carousel__dot--active', i === currentIndex));
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('carousel__dot--active', i === currentIndex);
+      });
     }
 
-    function goToSlide(index) { currentIndex = index; updateCarousel(); }
+    function goToSlide(index) {
+      currentIndex = index;
+      updateCarousel();
+    }
 
-    prevBtn.addEventListener('click', () => { currentIndex = (currentIndex - 1 + slides.length) % slides.length; updateCarousel(); });
-    nextBtn.addEventListener('click', () => { currentIndex = (currentIndex + 1) % slides.length; updateCarousel(); });
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      updateCarousel();
+    });
 
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateCarousel();
+    });
+
+    // Lightbox
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = lightbox.querySelector('.lightbox__img');
     const lightboxClose = lightbox.querySelector('.lightbox__close');
@@ -221,10 +264,16 @@
     const lightboxNext = lightbox.querySelector('.lightbox__nav--next');
     let lightboxIndex = 0;
 
-    const images = Array.from(slides).map(slide => ({ src: slide.querySelector('img').src, alt: slide.querySelector('img').alt }));
+    const images = Array.from(slides).map(slide => ({
+      src: slide.querySelector('img').src,
+      alt: slide.querySelector('img').alt
+    }));
 
     slides.forEach((slide, i) => {
-      slide.querySelector('img').addEventListener('click', () => { lightboxIndex = i; openLightbox(); });
+      slide.querySelector('img').addEventListener('click', () => {
+        lightboxIndex = i;
+        openLightbox();
+      });
     });
 
     function openLightbox() {
@@ -234,14 +283,31 @@
       document.body.style.overflow = 'hidden';
     }
 
-    function closeLightbox() { lightbox.classList.remove('lightbox--open'); document.body.style.overflow = ''; }
+    function closeLightbox() {
+      lightbox.classList.remove('lightbox--open');
+      document.body.style.overflow = '';
+    }
 
     lightboxClose.addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
 
-    lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); lightboxIndex = (lightboxIndex - 1 + images.length) % images.length; lightboxImg.src = images[lightboxIndex].src; lightboxImg.alt = images[lightboxIndex].alt; });
-    lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); lightboxIndex = (lightboxIndex + 1) % images.length; lightboxImg.src = images[lightboxIndex].src; lightboxImg.alt = images[lightboxIndex].alt; });
+    lightboxPrev.addEventListener('click', (e) => {
+      e.stopPropagation();
+      lightboxIndex = (lightboxIndex - 1 + images.length) % images.length;
+      lightboxImg.src = images[lightboxIndex].src;
+      lightboxImg.alt = images[lightboxIndex].alt;
+    });
 
+    lightboxNext.addEventListener('click', (e) => {
+      e.stopPropagation();
+      lightboxIndex = (lightboxIndex + 1) % images.length;
+      lightboxImg.src = images[lightboxIndex].src;
+      lightboxImg.alt = images[lightboxIndex].alt;
+    });
+
+    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
       if (!lightbox.classList.contains('lightbox--open')) return;
       if (e.key === 'Escape') closeLightbox();
