@@ -27,7 +27,7 @@
       --color-red-hover: #bb0c0c;
       --color-red-glow: rgba(221, 14, 14, 0.3);
       --font-family: 'Unbounded', sans-serif;
-      --max-width: 1400px;
+      --max-width: 1600px;
       --header-height: 70px;
     }
 
@@ -103,7 +103,7 @@
 
     @media (min-width: 1200px) {
       .header__container {
-        padding: 0 3rem;
+        padding: 0 4rem;
       }
     }
 
@@ -295,13 +295,12 @@
 
     @media (min-width: 1200px) {
       .hero__container {
-        padding: 3rem 3rem;
+        padding: 4rem 4rem;
         gap: 5rem;
       }
     }
 
     .hero__content {
-      max-width: 700px;
       flex: 1;
     }
 
@@ -320,7 +319,7 @@
 
     @media (min-width: 1200px) {
       .hero__logo {
-        width: 350px;
+        width: 420px;
       }
     }
 
@@ -362,7 +361,6 @@
     .hero__description {
       font-size: clamp(1rem, 1.1vw, 1.15rem);
       color: var(--color-white-muted);
-      max-width: 600px;
       margin-bottom: 2rem;
       line-height: 1.7;
     }
@@ -424,7 +422,7 @@
 
     @media (min-width: 1200px) {
       .section {
-        padding: 6rem 3rem;
+        padding: 6rem 4rem;
       }
     }
 
@@ -440,7 +438,7 @@
     }
 
     .section__header {
-      max-width: 700px;
+      max-width: 900px;
       margin-bottom: 3rem;
     }
 
@@ -730,6 +728,10 @@
       }
     }
 
+    .contact-left .section__header {
+      margin-bottom: 2rem;
+    }
+
     .contact-info {
       display: flex;
       flex-direction: column;
@@ -803,7 +805,6 @@
       font-size: 0.95rem;
       color: var(--color-white-muted);
       margin-bottom: 1.5rem;
-      max-width: 350px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -1168,16 +1169,17 @@
     <!-- ====== CONTACTO ====== -->
     <section id="contacto" class="section" aria-labelledby="contacto-title">
       <div class="section__container">
-        <header class="section__header">
-          <h2 id="contacto-title" class="section__title">Contacto</h2>
-          <p class="section__subtitle">
-            Si tenés preguntas sobre el proyecto o querés saber más sobre cómo participar, no dudes en escribirnos.
-          </p>
-        </header>
-
         <div class="contact-grid">
-          <!-- Info de contacto -->
-          <div class="contact-info">
+          <!-- Columna izquierda: título + info -->
+          <div class="contact-left">
+            <header class="section__header">
+              <h2 id="contacto-title" class="section__title">Contacto</h2>
+              <p class="section__subtitle">
+                Si tenés preguntas sobre el proyecto o querés saber más sobre cómo participar, no dudes en escribirnos.
+              </p>
+            </header>
+
+            <div class="contact-info">
             <div class="contact-item">
               <div class="contact-item__icon" aria-hidden="true">
                 <!-- Icono Email -->
@@ -1188,7 +1190,7 @@
               <div>
                 <div class="contact-item__label">Email (Sponsors)</div>
                 <div class="contact-item__value">
-                  <a href="mailto:Motorsports@frba.utn.edu.ar">Motorsports@frba.utn.edu.ar</a>
+                  <a href="mailto:motorsports@frba.utn.edu.ar">motorsports@frba.utn.edu.ar</a>
                 </div>
               </div>
             </div>
@@ -1226,6 +1228,7 @@
               </div>
             </div>
           </div>
+          </div>
 
           <!-- CTAs -->
           <div class="contact-ctas">
@@ -1246,7 +1249,7 @@
               <p class="contact-cta__text">
                 Acompañá al equipo y formá parte del proyecto. Escribinos para conocer las formas de colaborar.
               </p>
-              <a href="mailto:Motorsports@frba.utn.edu.ar"
+              <a href="mailto:motorsports@frba.utn.edu.ar"
                  class="btn btn--secondary">
                 Contactanos
               </a>
