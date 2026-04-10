@@ -42,6 +42,7 @@
   letter-spacing: -0.02em;
   margin-bottom: 1.5rem;
   color: var(--color-red);
+  justify-self: center;
 }
 
 .hero__description {
