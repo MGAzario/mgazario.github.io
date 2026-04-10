@@ -68,7 +68,7 @@
 .hero__logo-img {
   width: 100%;
   height: auto;
-  border-radius: 16px;
+  border-radius: 75px;
   filter: drop-shadow(0 0 40px rgba(221, 14, 14, 0.15));
   transition: transform 0.3s ease, filter 0.3s ease;
 }
@@ -94,6 +94,7 @@
   line-height: 1.2;
   letter-spacing: -0.01em;
   margin-bottom: 1.25rem;
+  justify-self: center;
 }
 
 .hero__title-accent {
