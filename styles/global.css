@@ -107,7 +107,7 @@ a {
   height: 42px;
   width: auto;
   object-fit: contain;
-  border-radius: 6px;
+  border-radius: 75px;
 }
 
 /* Hamburger button (mobile) */
@@ -358,8 +358,8 @@ a {
 }
 
 .btn--secondary {
-  background-color: transparent;
-  color: var(--color-white-muted);
+  background-color: white;
+  color: #0c0c0f;
   border: 1px solid rgba(252, 246, 230, 0.15);
 }
 
