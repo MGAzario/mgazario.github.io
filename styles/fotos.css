@@ -1,0 +1,97 @@
+:root {
+    --carousel-width: 100%; /* Ancho total del contenedor visible */
+    --gap: 15px; /* Espacio entre fotos */
+}
+
+.carousel-container {
+    width: var(--carousel-width);
+    margin: auto;
+    overflow: hidden; /* Vital para que el loop infinito funcione */
+    position: relative;
+    padding: 10px 0; /* Un poco de espacio arriba/abajo */
+}
+
+.carousel-slide {
+    display: flex;
+    gap: var(--gap);
+    width: 100%;
+    transition: transform 1.5s ease-in-out;
+}
+
+.carousel-slide img {
+    /* Cálculo para que entren 3 fotos perfectas con sus gaps */
+    width: calc((var(--carousel-width) - (2 * var(--gap))) / 3);
+    height: auto;
+    object-fit: cover; /* Asegura que no se deformen */
+    
+    /* REDONDEADO DE BORDES */
+    border-radius: 15px; 
+}
+
+/* Estilo para las flechas */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border: none;
+    font-size: 30px; /* Flechas grandes */
+    padding: 15px 10px;
+    cursor: pointer;
+    z-size: 10;
+    border-radius: 5px; /* Pequeño redondeado para el botón */
+    transition: background 3s;
+}
+
+.carousel-arrow:hover {
+    background: rgba(0,0,0,0.8);
+}
+
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000; /* Por encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.modal-content {
+    width: 50%;
+    border-radius: 10px;
+    animation: zoom 0.3s;
+}
+
+@media screen and (max-width: 768px) {
+    .modal-content {
+        max-width: 95%;
+        border-radius: 5px; 
+    }
+}
+
+@keyframes zoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+/* Botón de cerrar */
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal:hover { color: #bbb; }
+
+#prevBtn { left: 10px; }
+#nextBtn { right: 10px; }
