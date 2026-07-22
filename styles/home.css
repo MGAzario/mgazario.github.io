@@ -3,16 +3,17 @@
    ======================================== */
 
 /* ========================================
-   Hero Section — Render full-screen
-   El auto ocupa toda la pantalla; al scrollear
-   aparece el contenido (sección .intro)
+   Hero Section — Auto difuminado + logo
+   El hero queda FIJO detrás; el contenido (.page)
+   sube y lo va tapando al scrollear (efecto reveal)
    ======================================== */
 .hero {
-  position: relative;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
   height: 100vh;
-  min-height: 480px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   overflow: hidden;
   background: var(--color-black);
@@ -28,18 +29,51 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+  /* Auto difuminado de fondo (no queda la foto 100% nítida) */
+  filter: blur(7px) brightness(0.55);
+  transform: scale(1.08);
 }
 
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(21, 21, 25, 0.2) 0%,
-    rgba(21, 21, 25, 0.35) 55%,
-    rgba(21, 21, 25, 0.9) 88%,
-    var(--color-black) 100%
-  );
+  background:
+    radial-gradient(circle at 50% 42%, rgba(21, 21, 25, 0.15) 0%, rgba(21, 21, 25, 0.7) 100%),
+    linear-gradient(to bottom, rgba(21, 21, 25, 0.55) 0%, rgba(21, 21, 25, 0.85) 100%);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  text-align: center;
+  padding: 0 1.5rem;
+}
+
+.hero__logo {
+  width: min(440px, 74vw);
+  height: auto;
+  filter: drop-shadow(0 8px 30px rgba(0, 0, 0, 0.55));
+}
+
+.hero__tagline {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-white-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* Wrapper del contenido: arranca 100vh abajo (para ver el hero
+   primero) y al subir tapa el hero fijo con su fondo negro */
+.page {
+  position: relative;
+  z-index: 1;
+  margin-top: 100vh;
+  background: var(--color-black);
 }
 
 /* ========================================

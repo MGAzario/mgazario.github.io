@@ -41,31 +41,37 @@
   </script>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="styles/global.css?v=2">
-  <link rel="stylesheet" href="styles/home.css?v=2">
+  <link rel="stylesheet" href="styles/global.css?v=3">
+  <link rel="stylesheet" href="styles/home.css?v=3">
 </head>
 <body>
   <!-- Header cargado dinámicamente -->
   <div id="site-header"></div>
 
   <main>
-    <!-- ====== HERO - Render full-screen (scroll para ver contenido) ====== -->
-    <section id="home" class="hero" aria-label="Monoplaza de UTN BA Motorsport">
+    <!-- ====== HERO - Auto difuminado de fondo + logo (queda fijo; el contenido sube tapándolo) ====== -->
+    <section id="home" class="hero" aria-label="UTN BA Motorsport">
       <div class="hero__bg">
         <img src="assets/img/render_fsae.jpg"
-             alt="Render del monoplaza Fórmula SAE eléctrico de UTN BA Motorsport en pista"
+             alt="Monoplaza Fórmula SAE eléctrico de UTN BA Motorsport"
              class="hero__bg-img" width="1920" height="1080" loading="eager">
         <div class="hero__overlay" aria-hidden="true"></div>
       </div>
+
+      <div class="hero__content">
+        <img src="assets/img/logo.png" alt="UTN BA Motorsport" class="hero__logo" width="440" height="86">
+        <span class="hero__tagline">UTN FRBA &middot; Fórmula SAE</span>
+      </div>
     </section>
+
+    <!-- El contenido va dentro de .page: sube y tapa el hero fijo al scrollear -->
+    <div class="page">
 
     <!-- ====== INTRO - Contenido que aparece al scrollear ====== -->
     <section id="intro" class="intro" aria-labelledby="intro-title">
       <div class="intro__glow" aria-hidden="true"></div>
 
       <div class="intro__container">
-        <span class="intro__tagline">UTN FRBA &middot; Fórmula SAE</span>
-
         <h1 id="intro-title" class="intro__title">
           Diseñamos y fabricamos un
           <span class="intro__title-accent">Fórmula SAE eléctrico</span>
@@ -370,6 +376,7 @@
         </div>
       </div>
     </section>
+    </div><!-- /.page -->
   </main>
 
   <!-- Footer cargado dinámicamente -->
