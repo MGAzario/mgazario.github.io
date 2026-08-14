@@ -1,0 +1,16 @@
+FOTOS DE LAS SUBPÁGINAS DE EQUIPO
+==================================
+
+Subí 3 fotos por área acá (en esta carpeta: assets/img/equipo/)
+con EXACTAMENTE estos nombres (todo en minúscula, sin acentos, .jpg):
+
+  Diseño         ->  diseno1.jpg       diseno2.jpg       diseno3.jpg
+  Simulación     ->  simulacion1.jpg   simulacion2.jpg   simulacion3.jpg
+  Industrial     ->  industrial1.jpg   industrial2.jpg   industrial3.jpg
+  Electrónica    ->  electronica1.jpg  electronica2.jpg  electronica3.jpg
+  Comunicación   ->  comunicacion1.jpg comunicacion2.jpg comunicacion3.jpg
+
+Notas:
+- Son JPG. Si las tenés en PNG, avisá y cambio la extensión en el código.
+- Recomendado: fotos apaisadas (horizontal), ~1600px de ancho, < 500 KB.
+- El nombre tiene que coincidir EXACTO o la foto no aparece.

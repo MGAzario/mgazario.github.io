@@ -596,3 +596,116 @@
   padding: 1rem 2rem;
   font-size: 1rem;
 }
+
+/* ========================================
+   Novedades (redes + globitos de posteos)
+   ======================================== */
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1.25rem;
+  min-width: 220px;
+  flex: 1 1 220px;
+  max-width: 320px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(252, 246, 230, 0.1);
+  border-radius: 14px;
+  transition: border-color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+}
+
+.social:hover {
+  border-color: var(--color-red);
+  background: rgba(0, 0, 0, 0.45);
+  transform: translateY(-2px);
+}
+
+.social__icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--color-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+}
+
+.social__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.social:hover .social__icon {
+  color: var(--color-red);
+}
+
+.social__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.social__name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.social__handle {
+  font-size: 0.8rem;
+  color: var(--color-white-subtle);
+}
+
+/* Globitos de posteos */
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.post-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(252, 246, 230, 0.12);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-white);
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.post-chip:hover {
+  border-color: var(--color-red);
+  background: rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+.post-chip__icon {
+  display: inline-flex;
+  color: var(--color-white-muted);
+}
+
+.post-chip:hover .post-chip__icon {
+  color: var(--color-red);
+}
+
+.post-chip__icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.posts__empty {
+  font-size: 0.95rem;
+  color: var(--color-white-subtle);
+}
