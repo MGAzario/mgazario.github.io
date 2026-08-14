@@ -604,7 +604,11 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 2.5rem;
+}
+
+/* La sección Seguinos es corta: sacamos el espacio de más hacia Contacto */
+#redes {
+  padding-bottom: 0;
 }
 
 .social {
