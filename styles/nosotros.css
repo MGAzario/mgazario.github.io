@@ -61,21 +61,6 @@
   border-radius: 16px;
 }
 
-/* Reels (videos verticales) */
-.reels {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.reel {
-  width: 100%;
-  max-width: 300px;
-  height: auto;
-  border-radius: 14px;
-  background: #000;
-}
 
 /* ========================================
    Content Sections
@@ -97,7 +82,7 @@
 }
 
 .section__container {
-  max-width: var(--max-width);
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -113,7 +98,6 @@
   color: var(--color-white-muted);
   line-height: 1.8;
   margin-bottom: 1.5rem;
-  max-width: 820px;
 }
 
 .section__text:last-child {
