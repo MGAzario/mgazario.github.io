@@ -151,17 +151,24 @@ a {
   display: none;
 }
 
-/* Mobile nav overlay */
+/* Mobile nav overlay.
+   OJO: .header tiene backdrop-filter, lo que lo convierte en contenedor
+   de referencia de sus hijos position:fixed. Por eso NO se puede usar
+   bottom:0 (quedaba relativo al header de 70px y el menú colapsaba);
+   fijamos altura explícita. */
 .nav--open {
-  display: flex;
+  display: block;
   position: fixed;
-  inset: 0;
   top: var(--header-height);
+  left: 0;
+  right: 0;
+  height: calc(100vh - var(--header-height));
+  height: calc(100dvh - var(--header-height));
   background: rgba(21, 21, 25, 0.98);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   z-index: 99;
-  padding: 2rem;
+  padding: 1.5rem 2rem 2rem;
   overflow-y: auto;
 }
 
@@ -307,6 +314,18 @@ a {
 
 .header__cta {
   display: inline-flex;
+  white-space: nowrap;
+}
+
+/* CTA: en mobile texto corto "Apoyanos" (menos invasivo); en desktop completo */
+.header__cta-full { display: none; }
+.header__cta-short { display: inline; }
+
+/* Menos padding lateral del header en mobile para dar aire */
+@media (max-width: 767px) {
+  .header__container {
+    padding: 0 1rem;
+  }
 }
 
 /* Show desktop nav, hide hamburger on larger screens */
@@ -327,6 +346,9 @@ a {
     padding: 0;
     overflow: visible;
   }
+
+  .header__cta-full { display: inline; }
+  .header__cta-short { display: none; }
 }
 
 /* ========================================

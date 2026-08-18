@@ -163,6 +163,8 @@
     }
   }
 
-  loadComponent(basePath + 'components/header.html', '#site-header');
-  loadComponent(basePath + 'components/footer.html', '#site-footer');
+  // Versión para evitar que el navegador use header/footer cacheados viejos
+  var V = '?v=11';
+  loadComponent(basePath + 'components/header.html' + V, '#site-header');
+  loadComponent(basePath + 'components/footer.html' + V, '#site-footer');
 })();
