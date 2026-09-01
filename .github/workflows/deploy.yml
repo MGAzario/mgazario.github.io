@@ -1,0 +1,36 @@
+name: Deploy a cPanel (FTP)
+
+# Deploy MANUAL: se dispara desde la pestaña Actions -> "Deploy a cPanel (FTP)" -> Run workflow.
+# Así podés verificar los cambios en GitHub Pages / dev antes de mandarlos a producción.
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Subir por FTP a public_html
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          server-dir: public_html/
+          # No subir archivos de desarrollo ni los pesados que no se usan
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            README.md
+            **/LEEME*.txt
+            **/descargar-logos.sh
+            assets/img/reel1.mp4
+            assets/img/reel2.mp4
+            assets/img/Render_fsae.png
+            assets/img/Nosotros.png
+            assets/img/CNC2.png
