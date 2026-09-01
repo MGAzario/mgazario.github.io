@@ -164,7 +164,7 @@
   }
 
   // Versión para evitar que el navegador use header/footer cacheados viejos
-  var V = '?v=11';
+  var V = '?v=12';
   loadComponent(basePath + 'components/header.html' + V, '#site-header');
   loadComponent(basePath + 'components/footer.html' + V, '#site-footer');
 })();
