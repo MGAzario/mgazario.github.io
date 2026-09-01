@@ -604,11 +604,15 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  justify-content: center;
 }
 
-/* La sección Seguinos es corta: sacamos el espacio de más hacia Contacto */
-#redes {
-  padding-bottom: 0;
+/* Seguinos y Sponsors van centrados (título, texto y grilla) */
+#redes .section__header,
+#sponsors .section__header {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .social {
@@ -722,6 +726,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   max-width: 1120px;
+  margin: 0 auto;
 }
 
 @media (min-width: 700px) {
