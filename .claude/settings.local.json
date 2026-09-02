@@ -4,5 +4,8 @@
       "Bash(python:*)",
       "Bash(powershell:*)"
     ]
+  },
+  "enabledPlugins": {
+    "agent-skills@addy-agent-skills": true
   }
 }
